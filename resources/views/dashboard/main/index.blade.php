@@ -1,21 +1,22 @@
 <x-layout.dashboard title="Dashboard Overview">
 
     <div>
-        <div class="grid grid-cols-1 md:grid-cols-2 @canany(['Pimpinan', 'HRD']) lg:grid-cols-4 @else lg:grid-cols-3 @endcanany gap-6 mb-8">
+        <div
+            class="grid grid-cols-1 md:grid-cols-2 @canany(['Pimpinan', 'HRD']) lg:grid-cols-4 @else lg:grid-cols-3 @endcanany gap-6 mb-8">
             @canany(['Pimpinan', 'HRD'])
-            <!-- Stat Card 1 - Total Karyawan (Only for Pimpinan & HRD) -->
-            <div class="bg-white rounded-xl shadow-sm p-6 flex items-center">
-                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 mr-4">
-                    <i class="fas fa-users text-xl"></i>
+                <!-- Stat Card 1 - Total Karyawan (Only for Pimpinan & HRD) -->
+                <div class="bg-white rounded-xl shadow-sm p-6 flex items-center">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 mr-4">
+                        <i class="fas fa-users text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium text-gray-500">Total Karyawan</h3>
+                        <p class="text-2xl font-semibold text-gray-800">{{ number_format($stats['total_karyawan']) }}</p>
+                        <p class="text-xs text-blue-500 flex items-center">
+                            <i class="fas fa-user-check mr-1"></i> Karyawan aktif
+                        </p>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="text-sm font-medium text-gray-500">Total Karyawan</h3>
-                    <p class="text-2xl font-semibold text-gray-800">{{ number_format($stats['total_karyawan']) }}</p>
-                    <p class="text-xs text-blue-500 flex items-center">
-                        <i class="fas fa-user-check mr-1"></i> Karyawan aktif
-                    </p>
-                </div>
-            </div>
             @endcanany
 
             <!-- Stat Card 2 -->
@@ -65,17 +66,18 @@
         </div>
 
         <!-- Charts -->
-        <div class="grid grid-cols-1 @canany(['Pimpinan', 'HRD']) lg:grid-cols-2 @else lg:grid-cols-1 @endcanany gap-6 mb-8">
+        <div
+            class="grid grid-cols-1 @canany(['Pimpinan', 'HRD']) lg:grid-cols-2 @else lg:grid-cols-1 @endcanany gap-6 mb-8">
             <div class="bg-white rounded-xl shadow-sm p-6">
                 <h3 class="text-lg font-semibold text-gray-800 mb-4">Catatan Lembur Bulanan</h3>
                 <canvas id="overtimeChart" height="300"></canvas>
             </div>
 
             @canany(['Pimpinan', 'HRD'])
-            <div class="bg-white rounded-xl shadow-sm p-6">
-                <h3 class="text-lg font-semibold text-gray-800 mb-4">Distribusi Karyawan per Departemen</h3>
-                <canvas id="departmentChart" height="300"></canvas>
-            </div>
+                <div class="bg-white rounded-xl shadow-sm p-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Distribusi Karyawan per Departemen</h3>
+                    <canvas id="departmentChart" height="300"></canvas>
+                </div>
             @endcanany
         </div>
 
@@ -178,39 +180,39 @@
             }
 
             @canany(['Pimpinan', 'HRD'])
-            // Department Chart
-            const departmentCtx = document.getElementById('departmentChart');
-            if (departmentCtx) {
-                const departmentLabels = @json($departmentStats->pluck('name'));
-                const departmentData = @json($departmentStats->pluck('karyawans_count'));
-                if (departmentData.length > 0 && departmentData.some(d => d > 0)) {
-                    new Chart(departmentCtx.getContext('2d'), {
-                        type: 'doughnut',
-                        data: {
-                            labels: departmentLabels,
-                            datasets: [{
-                                data: departmentData,
-                                backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#8b5cf6',
-                                    '#9ca3af',
-                                    '#ef4444',
-                                    '#06b6d4'
-                                ]
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            plugins: {
-                                legend: {
-                                    position: 'bottom'
+                // Department Chart
+                const departmentCtx = document.getElementById('departmentChart');
+                if (departmentCtx) {
+                    const departmentLabels = @json($departmentStats->pluck('name'));
+                    const departmentData = @json($departmentStats->pluck('karyawans_count'));
+                    if (departmentData.length > 0 && departmentData.some(d => d > 0)) {
+                        new Chart(departmentCtx.getContext('2d'), {
+                            type: 'doughnut',
+                            data: {
+                                labels: departmentLabels,
+                                datasets: [{
+                                    data: departmentData,
+                                    backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#8b5cf6',
+                                        '#9ca3af',
+                                        '#ef4444',
+                                        '#06b6d4'
+                                    ]
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                plugins: {
+                                    legend: {
+                                        position: 'bottom'
+                                    }
                                 }
                             }
-                        }
-                    });
-                } else {
-                    departmentCtx.parentElement.innerHTML =
-                        '<p class="text-gray-500 text-center py-8">Belum ada data karyawan per departemen</p>';
+                        });
+                    } else {
+                        departmentCtx.parentElement.innerHTML =
+                            '<p class="text-gray-500 text-center py-8">Belum ada data karyawan per departemen</p>';
+                    }
                 }
-            }
             @endcanany
         });
     </script>
