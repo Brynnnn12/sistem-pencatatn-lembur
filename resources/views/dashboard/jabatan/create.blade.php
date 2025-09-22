@@ -1,12 +1,12 @@
 <x-layout.dashboard title="Tambah Jabatan">
     <div class="container mx-auto px-4 py-8">
-        <div class="max-w-4xl mx-auto">
+        <div class="w-full mx-auto">
             <div class="bg-white shadow-md rounded-lg overflow-hidden">
                 <!-- Header -->
                 <div class="bg-gradient-to-r from-blue-600 to-blue-800 px-6 py-4">
                     <h1 class="text-2xl font-bold text-white flex items-center">
                         <i class="fas fa-plus mr-2"></i>
-                        Tambah Jabatan
+                        Tambah
                     </h1>
                 </div>
 

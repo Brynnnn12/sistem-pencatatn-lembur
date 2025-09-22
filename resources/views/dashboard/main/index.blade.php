@@ -1,9 +1,9 @@
-<x-layout.dashboard title="Dashboard Overview">
+<x-layout.dashboard title="Main">
 
     <div>
         <div
-            class="grid grid-cols-1 md:grid-cols-2 @canany(['Pimpinan', 'HRD']) lg:grid-cols-4 @else lg:grid-cols-3 @endcanany gap-6 mb-8">
-            @canany(['Pimpinan', 'HRD'])
+            class="grid grid-cols-1 md:grid-cols-2 @hasanyrole('Pimpinan|HRD') lg:grid-cols-4 @else lg:grid-cols-3 @endhasanyrole gap-6 mb-8">
+            @hasanyrole('Pimpinan|HRD')
                 <!-- Stat Card 1 - Total Karyawan (Only for Pimpinan & HRD) -->
                 <div class="bg-white rounded-xl shadow-sm p-6 flex items-center">
                     <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 mr-4">
@@ -17,7 +17,7 @@
                         </p>
                     </div>
                 </div>
-            @endcanany
+            @endhasanyrole
 
             <!-- Stat Card 2 -->
             <div class="bg-white rounded-xl shadow-sm p-6 flex items-center">
@@ -67,18 +67,18 @@
 
         <!-- Charts -->
         <div
-            class="grid grid-cols-1 @canany(['Pimpinan', 'HRD']) lg:grid-cols-2 @else lg:grid-cols-1 @endcanany gap-6 mb-8">
+            class="grid grid-cols-1 @hasanyrole('Pimpinan|HRD') lg:grid-cols-2 @else lg:grid-cols-1 @endhasanyrole gap-6 mb-8">
             <div class="bg-white rounded-xl shadow-sm p-6">
                 <h3 class="text-lg font-semibold text-gray-800 mb-4">Catatan Lembur Bulanan</h3>
                 <canvas id="overtimeChart" height="300"></canvas>
             </div>
 
-            @canany(['Pimpinan', 'HRD'])
+            @hasanyrole('Pimpinan|HRD')
                 <div class="bg-white rounded-xl shadow-sm p-6">
                     <h3 class="text-lg font-semibold text-gray-800 mb-4">Distribusi Karyawan per Departemen</h3>
                     <canvas id="departmentChart" height="300"></canvas>
                 </div>
-            @endcanany
+            @endhasanyrole
         </div>
 
         <!-- Recent Activity -->
@@ -179,7 +179,7 @@
                 });
             }
 
-            @canany(['Pimpinan', 'HRD'])
+            @hasanyrole('Pimpinan|HRD')
                 // Department Chart
                 const departmentCtx = document.getElementById('departmentChart');
                 if (departmentCtx) {
@@ -213,7 +213,7 @@
                             '<p class="text-gray-500 text-center py-8">Belum ada data karyawan per departemen</p>';
                     }
                 }
-            @endcanany
+            @endhasanyrole
         });
     </script>
 </x-layout.dashboard>

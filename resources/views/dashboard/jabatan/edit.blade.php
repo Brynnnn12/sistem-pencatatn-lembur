@@ -6,7 +6,7 @@
                 <div class="bg-gradient-to-r from-blue-600 to-blue-800 px-6 py-4">
                     <h1 class="text-2xl font-bold text-white flex items-center">
                         <i class="fas fa-edit mr-2"></i>
-                        Edit Jabatan
+                        Edit
                     </h1>
                 </div>
 

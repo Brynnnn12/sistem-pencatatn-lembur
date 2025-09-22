@@ -1,11 +1,10 @@
 <!-- Mobile Sidebar -->
-<div x-show="isSidebarOpen" @click.away="isSidebarOpen = false" x-transition:ent <a
-    href="{{ route('catatan-lembur.create') }}"
-    class="group flex items-center px-4 py-3 rounded-xl transition-all duration-300 hover:bg-white/10 hover:shadow-lg hover:scale-[1.02] hover:translate-x-1 {{ request()->routeIs('catatan-lembur.create') ? 'bg-white/20 shadow-lg scale-[1.02] translate-x-1' : '' }}"
-    @click="isSidebarOpen = false">
-    <div
-        class="w-8 h-8 bg-yellow-600/50 rounded-lg flex items-center justify-center mr-3 group-hover:bg-yellow-500 transition-all duration-300 group-hover:rotate-12">
-        <i class="fas fa-plus text-sm"></i>
+<div x-show="isSidebarOpen" @click.away="isSidebarOpen = false" class="fixed inset-0 z-50 md:hidden" x-cloak>
+    <div class="fixed inset-0 bg-gray-800 bg-opacity-75 backdrop-blur-sm" @click="isSidebarOpen = false"></div>
+    <div x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-start="-translate-x-full"
+        x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-in duration-200 transform"
+        x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full"
+        class="fixed inset-y-0 left-0 w-72 max-w-[85vw] bg-gradient-to-b from-blue-900 via-blue-800 to-blue-900 text-white flex flex-col shadow-2xl">
     </div>
     <span class="font-medium">Ajukan Lembur</span>
     </a>ition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
@@ -55,11 +54,11 @@
                 </a>
 
                 <!-- Admin & Management Menu -->
-                @if (Auth::user()->hasRole('Admin') || Auth::user()->hasRole('Pimpinan') || Auth::user()->hasRole('HRD'))
+                @if (Auth::user()->hasAnyRole(['Pimpinan', 'HRD']))
                     <div class="pt-6">
                         <p class="text-xs font-semibold text-blue-300 uppercase tracking-wider mb-4 px-4">Management</p>
 
-                        @if (Auth::user()->hasRole('Admin'))
+                        @if (Auth::user()->hasRole('Pimpinan'))
                             <a href="{{ route('jabatan.index') }}"
                                 class="group flex items-center px-4 py-3 rounded-xl transition-all duration-300 hover:bg-white/10 hover:shadow-lg hover:scale-[1.02] hover:translate-x-1 {{ request()->routeIs('jabatan.*') ? 'bg-white/20 shadow-lg scale-[1.02] translate-x-1' : '' }}"
                                 @click="isSidebarOpen = false">

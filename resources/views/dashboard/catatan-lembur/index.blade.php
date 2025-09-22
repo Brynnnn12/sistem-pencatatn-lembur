@@ -1,4 +1,4 @@
-<x-layout.dashboard title="Manajemen Catatan Lembur">
+<x-layout.dashboard title="Catatan Lembur">
 
     <x-ui.card>
         <x-slot name="header">
@@ -12,7 +12,7 @@
             @can('create', App\Models\CatatanLembur::class)
                 <x-ui.button variant="primary" icon="fas fa-plus"
                     onclick="location.href='{{ route('catatan-lembur.create') }}'">
-                    Tambah Catatan Lembur
+                    Tambah
                 </x-ui.button>
             @endcan
         </x-slot>

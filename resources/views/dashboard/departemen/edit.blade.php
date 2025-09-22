@@ -1,4 +1,4 @@
-<x-layout.dashboard title="Edit Departemen">
+<x-layout.dashboard title="Departemen">
     <div class="container mx-auto px-4 py-8">
         <div class="max-w-4xl mx-auto">
             <div class="bg-white shadow-md rounded-lg overflow-hidden">
@@ -6,7 +6,7 @@
                 <div class="bg-gradient-to-r from-purple-600 to-purple-800 px-6 py-4">
                     <h1 class="text-2xl font-bold text-white flex items-center">
                         <i class="fas fa-edit mr-2"></i>
-                        Edit Departemen
+                        Edit
                     </h1>
                 </div>
 

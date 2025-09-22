@@ -1,4 +1,4 @@
-<x-layout.dashboard title="Manajemen Karyawan">
+<x-layout.dashboard title="Karyawan">
 
     <x-ui.card>
         <x-slot name="header">

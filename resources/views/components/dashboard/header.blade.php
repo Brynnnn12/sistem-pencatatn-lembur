@@ -31,26 +31,17 @@
                         class="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center shadow-sm">
                         <span class="font-bold text-white text-sm">{{ substr(Auth::user()->name, 0, 1) }}</span>
                     </div>
-                    <div class="hidden md:block text-left">
-                        <p class="text-sm font-medium text-gray-900">{{ Auth::user()->name }}</p>
-                        <p class="text-xs text-gray-500">{{ Auth::user()->getRoleNames()->first() ?? 'User' }}</p>
-                    </div>
                     <i class="fas fa-chevron-down text-gray-400 text-sm transition-transform"
                         :class="{ 'rotate-180': open }"></i>
                 </button>
 
                 <!-- Dropdown Menu -->
                 <div x-show="open" x-transition
-                    class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-50">
+                    class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-[100]">
                     <a href="{{ route('profile.edit') }}"
                         class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
                         <i class="fas fa-user mr-3 text-gray-500"></i>
                         Profile
-                    </a>
-                    <a href="#"
-                        class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
-                        <i class="fas fa-cog mr-3 text-gray-500"></i>
-                        Settings
                     </a>
                     <hr class="my-1 border-gray-200">
                     <form action="{{ route('logout') }}" method="POST" class="w-full">

@@ -6,7 +6,7 @@
                 <div class="bg-gradient-to-r from-orange-600 to-orange-800 px-6 py-4">
                     <h1 class="text-2xl font-bold text-white flex items-center">
                         <i class="fas fa-plus mr-2"></i>
-                        Tambah Catatan Lembur
+                        Tambah
                     </h1>
                 </div>
 
