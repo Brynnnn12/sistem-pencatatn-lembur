@@ -1,842 +1,417 @@
-# ⚽️ BreezeShield - Aplikasi Booking Lapangan Futsal
+# 🕒 Sistem Pencatatan Lembur
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Laravel-11.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel">
-  <img src="https://img.shields.io/badge/PHP-8.2+-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP">
-  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
-  <img src="https://img.shields.io/badge/Midtrans_Payment-00B4D8?style=for-the-badge&logo=stripe&logoColor=white" alt="Midtrans">
+  <img src="https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel">
+  <img src="https://img.shields.io/badge/PHP-8.3+-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP">
+  <img src="https://img.shields.io/badge/Tailwind_CSS-3.x-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
+  <img src="https://img.shields.io/badge/MySQL-8.0+-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License">
 </p>
 
 <p align="center">
-  <strong>🚀 Platform booking lapangan futsal online dengan sistem pembayaran terintegrasi</strong>
+  <strong>🚀 Sistem Manajemen Pencatatan Lembur Berbasis Web untuk Perusahaan</strong>
 </p>
 
-## 📋 Tentang BreezeShield
+## 📋 Tentang Sistem
 
-BreezeShield adalah platform booking lapangan futsal online yang memudahkan pengguna untuk memesan lapangan olahraga secara real-time. Aplikasi ini menyediakan sistem booking yang lengkap dengan integrasi pembayaran Midtrans, manajemen lapangan, dan dashboard admin untuk mengelola seluruh operasional.
+Sistem Pencatatan Lembur adalah aplikasi web modern yang dirancang untuk mengelola dan mencatat jam lembur karyawan secara efisien. Sistem ini menyediakan platform terintegrasi untuk tracking waktu kerja, perhitungan upah lembur otomatis, dan manajemen persetujuan dengan kontrol akses berbasis role yang ketat.
 
 ### ✨ Fitur Utama
 
--   ⚽️ **Booking Lapangan Real-time** - Sistem booking online 24/7
--   💳 **Pembayaran Terintegrasi** - Menggunakan Midtrans (sandbox & production)
--   🔐 **Sistem Autentikasi Lengkap** - Menggunakan Laravel Breeze
--   👥 **Manajemen Role & Permission** - Menggunakan Spatie Laravel Permission
--   🎨 **UI Dashboard yang Indah** - Desain modern dan responsif
--   🔔 **Integrasi Sweet Alert** - Alert dan notifikasi yang cantik
--   📱 **Responsif Mobile** - Bekerja sempurna di semua perangkat
--   📊 **Dashboard Admin** - Manajemen lapangan, booking, dan pembayaran
--   🛡️ **Aman Secara Default** - Mengikuti praktik terbaik Laravel
+-   🕒 **Pencatatan Lembur Real-time** - Sistem tracking waktu kerja lembur karyawan
+-   💰 **Perhitungan Upah Otomatis** - Kalkulasi gaji lembur berdasarkan jam kerja
+-   🔐 **Sistem Role & Permission** - Kontrol akses ketat (Karyawan, HRD, Pimpinan)
+-   ✅ **Workflow Persetujuan** - Sistem approval bertingkat untuk lembur
+-   📊 **Dashboard Analytics** - Laporan dan statistik lembur lengkap
+-   📱 **Responsive Design** - Interface modern dan mobile-friendly
+-   🔔 **Notifikasi Real-time** - Alert untuk status persetujuan
+-   📄 **Export Laporan** - Generate laporan PDF untuk administrasi
 
-## 🛠️ Stack Teknologi
+## 🛠️ Tech Stack
 
--   **Backend**: Laravel 11.x
--   **Frontend**: Blade Templates + Tailwind CSS + Alpine.js
--   **Autentikasi**: Laravel Breeze
--   **Manajemen Role**: Spatie Laravel Permission
--   **Pembayaran**: Midtrans Payment Gateway
--   **Alert**: SweetAlert2
--   **Database**: MySQL/PostgreSQL/SQLite
--   **Styling**: Tailwind CSS + Komponen Custom
--   **JavaScript**: Vanilla JS + Alpine.js
+### Backend
 
-## 📦 Yang Sudah Disediakan
+-   **Framework**: Laravel 12.x
+-   **PHP**: 8.3+
+-   **Database**: MySQL 8.0+
+-   **Authentication**: Laravel Breeze
+-   **Authorization**: Spatie Laravel Permission
+-   **PDF Generation**: Barryvdh Laravel DOMPDF
 
-### ⚽️ Sistem Booking Lapangan
+### Frontend
 
--   **Daftar Lapangan Lengkap** - Menampilkan semua lapangan tersedia
--   **Pencarian & Filter** - Cari berdasarkan lokasi, jenis olahraga
--   **Booking Real-time** - Sistem booking dengan validasi waktu
--   **Kalkulasi Otomatis** - Hitung durasi dan total harga secara real-time
--   **Validasi Booking** - Cek konflik jadwal otomatis
--   **Riwayat Booking** - Lihat semua booking yang pernah dibuat
+-   **CSS Framework**: Tailwind CSS 3.x
+-   **JavaScript**: Alpine.js 3.x
+-   **Icons**: Font Awesome 6.x
+-   **Charts**: Chart.js 4.x
+-   **Alerts**: SweetAlert2 11.x
+-   **Build Tool**: Vite 7.x
 
-### 💳 Sistem Pembayaran
+### Development Tools
 
--   **Integrasi Midtrans** - Payment gateway terpercaya Indonesia
--   **Mode Sandbox & Production** - Untuk testing dan live
--   **Berbagai Metode Pembayaran** - Transfer bank, e-wallet, kartu kredit
--   **Callback Handler** - Update status pembayaran otomatis
--   **Invoice & Receipt** - Sistem struk pembayaran
+-   **Testing**: Pest PHP
+-   **Code Quality**: Laravel Pint
+-   **Package Manager**: Composer & NPM
+-   **Local Development**: Laragon / XAMPP / Docker
 
-### 🔐 Sistem Autentikasi
+## 📦 Paket yang Digunakan
 
--   Registrasi dan login pengguna
--   Fungsi reset password
--   Verifikasi email
--   Fungsi remember me
--   Manajemen profil pengguna
+### Composer Packages (PHP)
 
-### 👥 Sistem Role & Permission
+```json
+{
+    "php": "^8.2",
+    "laravel/framework": "^12.0",
+    "laravel/breeze": "^2.3",
+    "spatie/laravel-permission": "^6.21",
+    "barryvdh/laravel-dompdf": "^3.1",
+    "laravel/tinker": "^2.10.1"
+}
+```
 
--   Role yang sudah dikonfigurasi (Admin, User)
--   Kontrol akses berbasis permission
--   Interface assignment role
--   Proteksi middleware
+### NPM Packages (JavaScript)
 
-### 🎨 Komponen UI
+```json
+{
+    "alpinejs": "^3.4.2",
+    "tailwindcss": "^3.1.0",
+    "chart.js": "^4.5.0",
+    "sweetalert2": "^11.23.0",
+    "axios": "^1.11.0",
+    "vite": "^7.0.4"
+}
+```
 
--   Layout dashboard modern
--   Navigasi responsif
--   Halaman welcome yang indah
--   Notifikasi alert dengan SweetAlert
--   Komponen form booking
--   Tabel data siap pakai
--   Card lapangan dengan gambar
+## � Persyaratan Sistem
 
-### 🔔 Sistem Notifikasi
+### Minimum Requirements
 
--   Integrasi SweetAlert untuk alert cantik
--   Alert Success/Error/Warning/Info
--   Notifikasi toast yang responsif
--   Dialog konfirmasi pembayaran
--   Flash messages untuk feedback user
+-   **PHP**: 8.3 atau lebih tinggi
+-   **Composer**: 2.6+
+-   **Node.js**: 18.x atau lebih tinggi
+-   **NPM**: 9.x atau lebih tinggi
+-   **MySQL**: 8.0+
+-   **Git**: 2.30+
 
-## 🎯 Cara Kerja Aplikasi
+### Recommended Development Environment
 
-### Untuk Pengguna (Customer)
+-   **Laragon** (Windows) - Full PHP development stack
+-   **XAMPP** (Cross-platform) - Apache, MySQL, PHP stack
+-   **Docker** - Containerized development
+-   **VS Code** - Recommended code editor dengan ekstensi Laravel
 
-1. **Kunjungi Website** - Akses halaman utama untuk melihat lapangan tersedia
-2. **Pilih Lapangan** - Klik tombol "Booking Sekarang" pada lapangan yang diinginkan
-3. **Login/Daftar** - Sistem akan redirect ke halaman login jika belum login
-4. **Isi Form Booking** - Pilih tanggal, waktu mulai, dan waktu selesai
-5. **Konfirmasi Booking** - Sistem akan menghitung durasi dan total harga otomatis
-6. **Pembayaran** - Lakukan pembayaran melalui Midtrans popup
-7. **Konfirmasi** - Booking berhasil dan akan muncul di halaman "My Bookings"
+### Browser Support
 
-### Untuk Admin
+-   Chrome 90+
+-   Firefox 88+
+-   Safari 14+
+-   Edge 90+
 
-1. **Login sebagai Admin** - Gunakan akun admin untuk akses dashboard
-2. **Kelola Lapangan** - Tambah, edit, hapus data lapangan
-3. **Monitor Booking** - Lihat semua booking yang masuk
-4. **Kelola Pembayaran** - Pantau status pembayaran
-5. **Manajemen User** - Kelola data pengguna dan role
+## � Panduan Instalasi
 
-## ⚙️ Konfigurasi Midtrans
+### 1. Clone Repository
 
-### Setup Environment
+```bash
+git clone https://github.com/Brynnnn12/sistem-pencatatn-lembur.git
+cd sistem-pencatatn-lembur
+```
 
-Tambahkan konfigurasi Midtrans di file `.env`:
+### 2. Install PHP Dependencies
+
+```bash
+composer install
+```
+
+### 3. Install Node.js Dependencies
+
+```bash
+npm install
+```
+
+### 4. Environment Configuration
+
+```bash
+# Copy file environment
+cp .env.example .env
+
+# Generate application key
+php artisan key:generate
+```
+
+### 5. Database Setup
+
+```bash
+# Buat database MySQL baru
+# Kemudian edit file .env:
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=sistem_lembur
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
+
+### 6. Database Migration & Seeding
+
+```bash
+# Jalankan migration
+php artisan migrate
+
+# (Opsional) Seed data dummy
+php artisan db:seed
+```
+
+### 7. Build Assets
+
+```bash
+# Untuk development
+npm run dev
+
+# Untuk production
+npm run build
+```
+
+### 8. Storage Link (untuk file uploads)
+
+```bash
+php artisan storage:link
+```
+
+### 9. Jalankan Aplikasi
+
+```bash
+# Menggunakan Laravel development server
+php artisan serve
+
+# Atau menggunakan Laragon/XAMPP built-in server
+```
+
+## ⚙️ Konfigurasi Aplikasi
+
+### Environment Variables (.env)
 
 ```env
-# Midtrans Configuration
-MIDTRANS_MERCHANT_ID=your_merchant_id
-MIDTRANS_CLIENT_KEY=your_client_key
-MIDTRANS_SERVER_KEY=your_server_key
-MIDTRANS_IS_PRODUCTION=false  # Set true untuk production
-MIDTRANS_SANDBOX_URL=https://app.sandbox.midtrans.com/snap/v1/transactions
-MIDTRANS_PRODUCTION_URL=https://app.midtrans.com/snap/v1/transactions
+APP_NAME="Sistem Pencatatan Lembur"
+APP_ENV=local
+APP_KEY=base64_generated_key
+APP_DEBUG=true
+APP_URL=http://localhost
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=sistem_lembur
+DB_USERNAME=root
+DB_PASSWORD=
+
+# Mail Configuration (untuk notifikasi)
+MAIL_MAILER=smtp
+MAIL_HOST=mailpit
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS="hello@example.com"
+MAIL_FROM_NAME="${APP_NAME}"
 ```
 
-### Callback URL
+### Permission Setup
 
-Pastikan callback URL di Midtrans dashboard mengarah ke:
+```bash
+# Set proper permissions untuk storage dan bootstrap/cache
+chmod -R 755 storage
+chmod -R 755 bootstrap/cache
 
+# Untuk Windows (menggunakan Git Bash atau WSL)
+# Biasanya sudah benar secara default
 ```
-https://yourdomain.com/midtrans/callback
-```
 
-### Webhook untuk Payment Status
+## 👥 Sistem Role & Permission
 
-Midtrans akan mengirim webhook ke endpoint:
+### Role yang Tersedia
 
-```
-https://yourdomain.com/midtrans/callback
-```
+1. **Karyawan** - User biasa yang dapat mencatat lembur
+2. **HRD** - Human Resource yang mengelola data karyawan dan departemen
+3. **Pimpinan** - Management yang menyetujui lembur dan melihat laporan
+
+### Permission Matrix
+
+| Fitur                | Karyawan | HRD | Pimpinan |
+| -------------------- | -------- | --- | -------- |
+| Lihat Dashboard      | ✅       | ✅  | ✅       |
+| Catat Lembur         | ✅       | ✅  | ❌       |
+| Lihat Lembur Sendiri | ✅       | ✅  | ❌       |
+| Approve Lembur       | ❌       | ✅  | ✅       |
+| Kelola Karyawan      | ❌       | ✅  | ❌       |
+| Kelola Departemen    | ❌       | ✅  | ❌       |
+| Kelola Jabatan       | ❌       | ✅  | ❌       |
+| Lihat Semua Lembur   | ❌       | ✅  | ✅       |
+| Generate Laporan     | ❌       | ✅  | ✅       |
+| Lihat Statistik      | ❌       | ✅  | ✅       |
 
 ## 📊 Struktur Database
 
 ### Tabel Utama
 
--   **users** - Data pengguna
--   **fields** - Data lapangan futsal
--   **bookings** - Data booking
--   **payments** - Data pembayaran
--   **roles & permissions** - Sistem role dan permission
+-   **users** - Data pengguna sistem
+-   **departemen** - Data departemen perusahaan
+-   **jabatan** - Data jabatan karyawan
+-   **karyawan** - Data karyawan lengkap
+-   **catatan_lembur** - Record lembur karyawan
+-   **persetujuan** - Status approval lembur
+-   **upah** - Data perhitungan gaji lembur
 
 ### Relasi Database
 
 ```
-users (1) ──── (N) bookings
-fields (1) ──── (N) bookings
-bookings (1) ──── (1) payments
-users (N) ──── (N) roles
-roles (N) ──── (N) permissions
+users (1) ──── (1) karyawan
+karyawan (N) ──── (1) departemen
+karyawan (N) ──── (1) jabatan
+karyawan (1) ──── (N) catatan_lembur
+catatan_lembur (1) ──── (1) persetujuan
+catatan_lembur (1) ──── (1) upah
 ```
-
-## 🚀 Panduan Cepat
-
-### Prasyarat
-
--   PHP 8.2 atau lebih tinggi
--   Composer
--   Node.js & NPM
--   MySQL/PostgreSQL/SQLite
-
-### Instalasi
-
-1. **Clone repository**
-
-    ```bash
-    git clone https://github.com/username/breezeshield.git
-    cd breezeshield
-    ```
-
-2. **Install dependensi PHP**
-
-    ```bash
-    composer install
-    ```
-
-3. **Install dependensi Node.js**
-
-    ```bash
-    npm install
-    ```
-
-4. **Setup environment**
-
-    ```bash
-    cp .env.example .env
-    php artisan key:generate
-    ```
-
-5. **Konfigurasi database**
-   Edit file `.env` dengan kredensial database Anda:
-
-    ```env
-    DB_CONNECTION=mysql
-    DB_HOST=127.0.0.1
-    DB_PORT=3306
-    DB_DATABASE=breezeshield_futsal
-    DB_USERNAME=username_anda
-    DB_PASSWORD=password_anda
-    ```
-
-6. **Konfigurasi Midtrans**
-   Tambahkan konfigurasi Midtrans di file `.env`:
-
-    ```env
-    # Midtrans Configuration
-    MIDTRANS_MERCHANT_ID=your_merchant_id
-    MIDTRANS_CLIENT_KEY=your_client_key
-    MIDTRANS_SERVER_KEY=your_server_key
-    MIDTRANS_IS_PRODUCTION=false
-    ```
-
-7. **Jalankan migrasi dan seeder**
-
-    ```bash
-    php artisan migrate --seed
-    ```
-
-8. **Buat storage link untuk upload gambar lapangan**
-
-    ```bash
-    php artisan storage:link
-    ```
-
-9. **Build asset**
-
-    ```bash
-    npm run build
-    ```
-
-10. **Jalankan aplikasi**
-    ```bash
-    php artisan serve
-    ```
-
-Kunjungi `http://localhost:8000` untuk melihat aplikasi booking futsal Anda!
-
-## 👤 User Default
-
-Setelah seeding, Anda dapat login dengan akun berikut:
-
-**Admin (untuk mengelola sistem):**
-
--   Email: `admin@example.com`
--   Password: `password`
--   Role: Admin
--   Akses: Dashboard admin, kelola lapangan, monitor booking
-
-**User Biasa (untuk booking):**
-
--   Email: `user@example.com`
--   Password: `password`
--   Role: User
--   Akses: Booking lapangan, lihat riwayat booking
-
-## 🎯 Panduan Penggunaan
-
-### 📋 Cara Booking Lapangan
-
-1. **Akses Halaman Utama**
-
-    - Kunjungi `http://localhost:8000`
-    - Lihat daftar lapangan yang tersedia
-
-2. **Pilih Lapangan**
-
-    - Klik tombol "Booking Sekarang" pada lapangan yang diinginkan
-    - Sistem akan redirect ke halaman login jika belum login
-
-3. **Login atau Daftar**
-
-    - Jika belum punya akun, klik "Register"
-    - Isi form registrasi dengan data lengkap
-
-4. **Isi Form Booking**
-
-    - Pilih tanggal booking (minimal hari ini)
-    - Tentukan waktu mulai dan waktu selesai
-    - Sistem akan menghitung durasi dan total harga otomatis
-
-5. **Konfirmasi dan Bayar**
-
-    - Klik "Booking Sekarang"
-    - Sistem akan validasi jadwal (tidak bentrok)
-    - Jika valid, akan muncul popup pembayaran Midtrans
-    - Pilih metode pembayaran (transfer, e-wallet, dll)
-
-6. **Selesai**
-    - Setelah pembayaran berhasil, Anda akan diarahkan ke halaman "My Bookings"
-    - Status booking akan berubah menjadi "Confirmed"
-
-### 📊 Fitur Admin Dashboard
-
-1. **Kelola Lapangan**
-
-    - Tambah lapangan baru dengan foto, nama, lokasi, harga
-    - Edit informasi lapangan
-    - Hapus lapangan yang tidak aktif
-
-2. **Monitor Booking**
-
-    - Lihat semua booking yang masuk
-    - Update status booking
-    - Lihat detail booking dan pembayaran
-
-3. **Manajemen User**
-    - Lihat daftar semua user
-    - Assign role ke user
-    - Kelola permission
-
-### 💰 Sistem Pembayaran
-
--   **Sandbox Mode**: Untuk testing (default)
--   **Production Mode**: Untuk live (set `MIDTRANS_IS_PRODUCTION=true`)
--   **Metode Pembayaran**: Transfer bank, GoPay, OVO, Dana, LinkAja, Kartu Kredit
--   **Callback**: Status pembayaran diupdate otomatis
--   **Refund**: Dapat dilakukan melalui dashboard Midtrans
-
-## 🔧 Troubleshooting
-
-### Masalah Umum
-
-**1. SweetAlert tidak muncul**
-
-```
-Solusi: Pastikan CDN SweetAlert sudah ter-load dengan benar
-```
-
-**2. Pembayaran Midtrans gagal**
-
-```
-Solusi:
-- Cek konfigurasi MIDTRANS_* di .env
-- Pastikan server key benar
-- Cek status sandbox/production
-```
-
-**3. Booking bentrok jadwal**
-
-```
-Solusi: Sistem otomatis mendeteksi konflik waktu
-- Pilih waktu yang berbeda
-- Atau pilih lapangan lain
-```
-
-**4. Gambar lapangan tidak muncul**
-
-```
-Solusi: Jalankan php artisan storage:link
-```
-
-### Log Error
-
-Cek log Laravel di `storage/logs/laravel.log` untuk debugging error.
-
-### Midtrans Testing
-
-Gunakan kartu testing Midtrans:
-
--   Visa: `4811 1111 1111 1114`
--   CVV: `123`
--   Expiry: Bulan/Tahun berapapun di masa depan
-
-## 🔗 API Endpoints
-
-### Public Routes (Tidak perlu login)
-
-```
-GET  /              - Halaman utama
-GET  /fields        - Daftar semua lapangan
-GET  /login         - Halaman login
-GET  /register      - Halaman registrasi
-```
-
-### Protected Routes (Perlu login)
-
-```
-GET  /booking/create           - Form booking (dengan field_id opsional)
-POST /booking                  - Proses booking
-GET  /my-bookings              - Riwayat booking user
-GET  /dashboard                - Dashboard admin
-```
-
-### Admin Routes (Role Admin)
-
-```
-GET  /dashboard/fields         - CRUD lapangan
-GET  /dashboard/bookings       - CRUD booking
-GET  /dashboard/payments       - CRUD pembayaran
-```
-
-### API Routes (untuk AJAX)
-
-```
-POST /midtrans/callback        - Callback pembayaran Midtrans
-GET  /payment/check/{bookingId} - Cek status pembayaran
-```
-
-## 🚀 Deployment
-
-### Persiapan Production
-
-1. **Environment Setup**
-
-    ```bash
-    cp .env.example .env
-    php artisan key:generate
-    ```
-
-2. **Database Production**
-
-    ```env
-    DB_CONNECTION=mysql
-    DB_HOST=your_production_host
-    DB_DATABASE=your_production_db
-    DB_USERNAME=your_production_user
-    DB_PASSWORD=your_production_pass
-    ```
-
-3. **Midtrans Production**
-
-    ```env
-    MIDTRANS_IS_PRODUCTION=true
-    MIDTRANS_MERCHANT_ID=your_production_merchant_id
-    MIDTRANS_CLIENT_KEY=your_production_client_key
-    MIDTRANS_SERVER_KEY=your_production_server_key
-    ```
-
-4. **Storage & Cache**
-
-    ```bash
-    php artisan storage:link
-    php artisan config:cache
-    php artisan route:cache
-    php artisan view:cache
-    ```
-
-5. **SSL Certificate**
-    - Pastikan domain menggunakan HTTPS
-    - Update callback URL Midtrans ke HTTPS
-
-### Hosting Requirements
-
--   **PHP**: 8.2 atau lebih tinggi
--   **Database**: MySQL 5.7+ / PostgreSQL 9.6+ / SQLite 3.8.8+
--   **Web Server**: Apache/Nginx dengan mod_rewrite
--   **SSL**: Certificate untuk HTTPS
--   **Storage**: Space untuk upload gambar lapangan
-
-### Monitoring & Maintenance
-
-1. **Log Monitoring**
-
-    ```bash
-    tail -f storage/logs/laravel.log
-    ```
-
-2. **Queue Worker** (jika menggunakan queue)
-
-    ```bash
-    php artisan queue:work
-    ```
-
-3. **Backup Database**
-    ```bash
-    php artisan db:backup
-    ```
 
 ## 🎯 Cara Penggunaan
 
-### Membuat Operasi CRUD
+### Untuk Karyawan
 
-BreezeShield menyediakan fondasi yang solid. Untuk menambahkan operasi CRUD Anda sendiri:
+1. **Login** ke sistem menggunakan akun karyawan
+2. **Akses Dashboard** untuk melihat ringkasan lembur
+3. **Catat Lembur** melalui menu "Catatan Lembur"
+4. **Isi Form** dengan detail jam kerja lembur
+5. **Submit** dan tunggu approval dari atasan
 
-1. **Buat Model dan Migration**
+### Untuk HRD
 
-    ```bash
-    php artisan make:model ModelAnda -mc
-    ```
+1. **Login** dengan akun HRD
+2. **Kelola Data Master** (Departemen, Jabatan, Karyawan)
+3. **Approve Lembur** yang diajukan karyawan
+4. **Generate Laporan** untuk management
+5. **Monitoring** performa lembur karyawan
 
-2. **Definisikan relasi dan fillable fields**
+### Untuk Pimpinan
 
-    ```php
-    // app/Models/ModelAnda.php
-    protected $fillable = ['nama', 'deskripsi'];
-    ```
+1. **Login** dengan akun Pimpinan
+2. **Review Dashboard** untuk overview perusahaan
+3. **Approve Lembur** dengan authority tertinggi
+4. **Akses Laporan** lengkap dan statistik
+5. **Monitoring** distribusi karyawan per departemen
 
-3. **Buat method Controller**
+## 🧪 Testing
 
-    ```php
-    // app/Http/Controllers/ModelAndaController.php
-    public function index()
-    {
-        $items = ModelAnda::paginate(10);
-        return view('model-anda.index', compact('items'));
-    }
-    ```
+### Menjalankan Tests
 
-4. **Tambahkan routes**
+```bash
+# Jalankan semua test
+php artisan test
 
-    ```php
-    // routes/web.php
-    Route::resource('model-anda', ModelAndaController::class)
-        ->middleware(['auth', 'verified']);
-    ```
+# Jalankan test dengan coverage
+php artisan test --coverage
 
-5. **Buat views menggunakan komponen yang ada**
-
-    ```blade
-    {{-- resources/views/model-anda/index.blade.php --}}
-    <x-app-layout>
-        <x-slot name="header">
-            <h2>Model Anda</h2>
-        </x-slot>
-
-        <!-- Konten Anda di sini -->
-    </x-app-layout>
-    ```
-
-### Menambah Permission
-
-1. **Buat permission**
-
-    ```bash
-    php artisan tinker
-    ```
-
-    ```php
-    use Spatie\Permission\Models\Permission;
-    Permission::create(['name' => 'kelola postingan']);
-    ```
-
-2. **Assign ke role**
-
-    ```php
-    $role = Role::findByName('admin');
-    $role->givePermissionTo('kelola postingan');
-    ```
-
-3. **Proteksi routes**
-    ```php
-    Route::get('/posts', [PostController::class, 'index'])
-        ->middleware(['auth', 'permission:kelola postingan']);
-    ```
-
-## 📁 Struktur Project
-
-```
-breezeshield/
-├── app/
-│   ├── Http/Controllers/
-│   │   ├── Home/BookingController.php    # Controller booking untuk user
-│   │   ├── Dashboard/
-│   │   │   ├── FieldController.php       # CRUD lapangan
-│   │   │   ├── BookingController.php     # CRUD booking
-│   │   │   └── PaymentController.php     # CRUD pembayaran
-│   ├── Models/
-│   │   ├── User.php                      # Model user
-│   │   ├── Field.php                     # Model lapangan
-│   │   ├── Booking.php                   # Model booking
-│   │   └── Payment.php                   # Model pembayaran
-│   ├── Services/
-│   │   └── PaymentService.php            # Service Midtrans
-│   └── Policies/                         # Policy otorisasi
-├── database/
-│   ├── migrations/                       # Migrasi database
-│   │   ├── create_fields_table.php       # Tabel lapangan
-│   │   ├── create_bookings_table.php     # Tabel booking
-│   │   └── create_payments_table.php     # Tabel pembayaran
-│   └── seeders/
-│       ├── FieldSeeder.php               # Data dummy lapangan
-│       ├── BookingSeeder.php             # Data dummy booking
-│       └── RoleSeeder.php                # Setup role & permission
-├── resources/
-│   ├── views/
-│   │   ├── home/
-│   │   │   ├── booking-create.blade.php  # Form booking
-│   │   │   ├── bookings.blade.php        # Riwayat booking
-│   │   │   └── fields.blade.php          # Daftar lapangan
-│   │   ├── dashboard/
-│   │   │   ├── fields/                   # CRUD lapangan
-│   │   │   ├── bookings/                 # CRUD booking
-│   │   │   └── payments/                 # CRUD pembayaran
-│   │   └── components/
-│   │       ├── layout/landing.blade.php  # Layout public
-│   │       ├── ui/sweet-alert.blade.php  # Komponen SweetAlert
-│   │       └── feedback/flash-messages.blade.php
-├── routes/
-│   ├── web.php                           # Routes utama
-│   └── auth.php                          # Routes autentikasi
-├── public/
-│   └── storage/                          # Storage link untuk gambar
-└── config/
-    └── midtrans.php                      # Konfigurasi Midtrans
+# Jalankan specific test file
+php artisan test tests/Feature/KaryawanTest.php
 ```
 
-## 🔧 Kustomisasi
+### Test Database
 
-### Styling
-
--   Edit `resources/css/app.css` untuk style custom
--   Modifikasi konfigurasi Tailwind di `tailwind.config.js`
--   Update komponen di `resources/views/components/`
-
-### Dashboard
-
--   Kustomisasi layout dashboard di `resources/views/dashboard.blade.php`
--   Tambah item navigasi baru di `resources/views/layouts/navigation.blade.php`
-
-### Halaman Welcome
-
--   Modifikasi halaman welcome di `resources/views/welcome.blade.php`
--   Update styling dan konten sesuai kebutuhan
-
-## � API Endpoints
-
-### Public Routes (Tidak perlu login)
-
-```
-GET  /              - Halaman utama
-GET  /fields        - Daftar semua lapangan
-GET  /login         - Halaman login
-GET  /register      - Halaman registrasi
+```bash
+# Gunakan database testing
+php artisan test --env=testing
 ```
 
-### Protected Routes (Perlu login)
+## 📚 API Documentation
 
+Sistem ini menggunakan RESTful API untuk beberapa endpoint internal:
+
+### Authentication Endpoints
+
+-   `POST /login` - Login user
+-   `POST /logout` - Logout user
+-   `POST /register` - Register user (disabled untuk production)
+
+### Resource Endpoints
+
+-   `GET /dashboard/departemen` - List departemen
+-   `GET /dashboard/karyawan` - List karyawan
+-   `GET /dashboard/catatan-lembur` - List catatan lembur
+-   `POST /dashboard/persetujuan/{id}/update-status` - Update status persetujuan
+
+## � Troubleshooting
+
+### Common Issues
+
+#### 1. Permission Denied
+
+```bash
+# Fix storage permissions
+chmod -R 755 storage
+chmod -R 755 bootstrap/cache
 ```
-GET  /booking/create           - Form booking (dengan field_id opsional)
-POST /booking                  - Proses booking
-GET  /my-bookings              - Riwayat booking user
-GET  /dashboard                - Dashboard admin
+
+#### 2. Database Connection Error
+
+```bash
+# Check .env database configuration
+# Ensure MySQL service is running
+# Create database manually if needed
 ```
 
-### Admin Routes (Role Admin)
+#### 3. Assets Not Loading
 
-```
-GET  /dashboard/fields         - CRUD lapangan
-GET  /dashboard/bookings       - CRUD booking
-GET  /dashboard/payments       - CRUD pembayaran
-```
-
-### API Routes (untuk AJAX)
-
-```
-POST /midtrans/callback        - Callback pembayaran Midtrans
-GET  /payment/check/{bookingId} - Cek status pembayaran
+```bash
+# Clear cache and rebuild assets
+php artisan view:clear
+php artisan config:clear
+npm run build
 ```
 
-## 🚀 Deployment
+#### 4. Composer Memory Limit
 
-### Persiapan Production
+```bash
+# Increase memory limit
+php -d memory_limit=-1 /usr/local/bin/composer install
+```
 
-1. **Environment Setup**
+## 🤝 Contributing
 
-    ```bash
-    cp .env.example .env
-    php artisan key:generate
-    ```
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Open Pull Request
 
-2. **Database Production**
+### Development Guidelines
 
-    ```env
-    DB_CONNECTION=mysql
-    DB_HOST=your_production_host
-    DB_DATABASE=your_production_db
-    DB_USERNAME=your_production_user
-    DB_PASSWORD=your_production_pass
-    ```
+-   Follow PSR-12 coding standards
+-   Use meaningful commit messages
+-   Write tests for new features
+-   Update documentation as needed
+-   Ensure code passes all tests
 
-3. **Midtrans Production**
+## 📝 License
 
-    ```env
-    MIDTRANS_IS_PRODUCTION=true
-    MIDTRANS_MERCHANT_ID=your_production_merchant_id
-    MIDTRANS_CLIENT_KEY=your_production_client_key
-    MIDTRANS_SERVER_KEY=your_production_server_key
-    ```
+Distributed under the MIT License. See `LICENSE` for more information.
 
-4. **Storage & Cache**
+## 👨‍💻 Developer
 
-    ```bash
-    php artisan storage:link
-    php artisan config:cache
-    php artisan route:cache
-    php artisan view:cache
-    ```
+**Brynnnn12**
 
-5. **SSL Certificate**
-    - Pastikan domain menggunakan HTTPS
-    - Update callback URL Midtrans ke HTTPS
+-   GitHub: [@Brynnnn12](https://github.com/Brynnnn12)
+-   Email: brynnnn12@example.com
 
-### Hosting Requirements
+## 🙏 Acknowledgments
 
--   **PHP**: 8.2 atau lebih tinggi
--   **Database**: MySQL 5.7+ / PostgreSQL 9.6+ / SQLite 3.8.8+
--   **Web Server**: Apache/Nginx dengan mod_rewrite
--   **SSL**: Certificate untuk HTTPS
--   **Storage**: Space untuk upload gambar lapangan
-
-### Monitoring & Maintenance
-
-1. **Log Monitoring**
-
-    ```bash
-    tail -f storage/logs/laravel.log
-    ```
-
-2. **Queue Worker** (jika menggunakan queue)
-
-    ```bash
-    php artisan queue:work
-    ```
-
-3. **Backup Database**
-
-    ```bash
-    php artisan db:backup
-    ```
-
-4. **Clear Cache**
-    ```bash
-    php artisan cache:clear
-    php artisan config:clear
-    php artisan route:clear
-    php artisan view:clear
-    ```
-
-## ⚡ Optimasi & Performa
-
-### Database Optimization
-
-1. **Indexing**
-
-    ```sql
-    -- Index untuk performa booking query
-    CREATE INDEX idx_bookings_field_date ON bookings(field_id, booking_date);
-    CREATE INDEX idx_bookings_user_status ON bookings(user_id, status);
-    ```
-
-2. **Query Optimization**
-    - Gunakan eager loading untuk relasi
-    - Implementasi pagination untuk data besar
-    - Cache hasil query yang sering digunakan
-
-### Frontend Optimization
-
-1. **Asset Optimization**
-
-    ```bash
-    npm run build  # Minify CSS & JS
-    ```
-
-2. **Image Optimization**
-    - Kompres gambar lapangan sebelum upload
-    - Gunakan format WebP untuk performa lebih baik
-    - Implementasi lazy loading untuk gambar
-
-## 📚 Dokumentasi & Sumber Daya
-
--   [Dokumentasi Laravel](https://laravel.com/docs)
--   [Dokumentasi Laravel Breeze](https://laravel.com/docs/starter-kits#laravel-breeze)
--   [Spatie Laravel Permission](https://spatie.be/docs/laravel-permission)
--   [Dokumentasi Tailwind CSS](https://tailwindcss.com/docs)
--   [Dokumentasi SweetAlert2](https://sweetalert2.github.io/)
--   [Dokumentasi Midtrans](https://docs.midtrans.com/)
--   [Laravel Best Practices](https://github.com/alexeymezenin/laravel-best-practices)
-
-## 🤝 Kontribusi
-
-Kontribusi sangat diterima! Silakan buat Pull Request. Untuk perubahan besar, silakan buka issue terlebih dahulu untuk mendiskusikan apa yang ingin Anda ubah.
-
-1. Fork project
-2. Buat feature branch Anda (`git checkout -b feature/FiturKeren`)
-3. Commit perubahan Anda (`git commit -m 'Tambah FiturKeren'`)
-4. Push ke branch (`git push origin feature/FiturKeren`)
-5. Buka Pull Request
-
-## 📝 Changelog
-
-### Versi 1.0.0
-
--   ✅ Sistem booking lapangan futsal lengkap
--   ✅ Integrasi pembayaran Midtrans
--   ✅ Dashboard admin untuk manajemen
--   ✅ Sistem autentikasi dengan role & permission
--   ✅ UI responsif dengan Tailwind CSS
--   ✅ SweetAlert untuk notifikasi
--   ✅ Validasi booking real-time
--   ✅ Callback handler pembayaran
--   ✅ Flash messages dengan komponen
-
-## 🐛 Issues & Support
-
-Jika Anda mengalami masalah atau membutuhkan dukungan:
-
-1. Periksa [issues](https://github.com/username/breezeshield/issues) yang sudah ada
-2. Buat issue baru dengan informasi detail
-3. Sertakan langkah-langkah untuk mereproduksi masalah
-4. Include log error dari `storage/logs/laravel.log`
-
-## � Support & Contact
-
--   **Email**: support@breezeshield.com
--   **Documentation**: [Wiki](https://github.com/username/breezeshield/wiki)
--   **Forum**: [Discussions](https://github.com/username/breezeshield/discussions)
-
-## �📄 Lisensi
-
-Project ini dilisensikan di bawah MIT License - lihat file [LICENSE](LICENSE) untuk detail.
-
-## 🙏 Penghargaan
-
--   [Tim Laravel](https://laravel.com/) untuk framework yang luar biasa
--   [Spatie](https://spatie.be/) untuk package permission
--   [Tailwind CSS](https://tailwindcss.com/) untuk framework CSS utility-first
--   [SweetAlert2](https://sweetalert2.github.io/) untuk alert yang cantik
--   [Midtrans](https://midtrans.com/) untuk payment gateway terpercaya
+-   [Laravel](https://laravel.com/) - The PHP Framework
+-   [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+-   [Alpine.js](https://alpinejs.dev/) - Minimal JavaScript framework
+-   [Spatie Laravel Permission](https://spatie.be/docs/laravel-permission) - Role & permission management
+-   [Chart.js](https://www.chartjs.org/) - Simple yet flexible charts
+-   [SweetAlert2](https://sweetalert2.github.io/) - Beautiful alerts
 
 ---
 
 <p align="center">
-  <strong>Dibuat dengan ❤️ menggunakan Laravel untuk kemajuan olahraga Indonesia</strong>
-</p>
-
-<p align="center">
-  <a href="#-breezeshield---aplikasi-booking-lapangan-futsal">Kembali ke atas</a>
+  <strong>⭐ Jika Anda merasa terbantu dengan project ini, jangan lupa untuk memberikan star!</strong>
 </p>

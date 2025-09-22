@@ -25,17 +25,17 @@ class CatatanLembur extends Model
         'jam_keluar' => 'datetime:H:i',
     ];
 
-    public function karyawan(): BelongsTo
+    public function karyawan()
     {
         return $this->belongsTo(Karyawan::class);
     }
 
-    public function upah(): HasOne
+    public function upah()
     {
         return $this->hasOne(Upah::class);
     }
 
-    public function persetujuan(): HasOne
+    public function persetujuan()
     {
         return $this->hasOne(Persetujuan::class);
     }
