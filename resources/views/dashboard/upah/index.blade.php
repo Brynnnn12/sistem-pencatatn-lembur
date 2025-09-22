@@ -57,12 +57,6 @@
                                     Lihat
                                 </x-ui.button>
                             @endcan
-                            @can('update', $upah)
-                                <x-ui.button size="xs" variant="outline" icon="fas fa-edit"
-                                    onclick="location.href='{{ route('upah.edit', $upah) }}'">
-                                    Edit
-                                </x-ui.button>
-                            @endcan
                             @can('delete', $upah)
                                 <form method="POST" action="{{ route('upah.destroy', $upah) }}"
                                     onsubmit="return confirm('Apakah Anda yakin ingin menghapus upah ini?')" class="inline">

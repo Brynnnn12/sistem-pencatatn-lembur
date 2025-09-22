@@ -1,5 +1,5 @@
 <!-- Header -->
-<header class="bg-white shadow-lg border-b border-gray-200">
+<header class="">
     <div class="flex items-center justify-between px-6 py-4">
         <!-- Left Section -->
         <div class="flex items-center space-x-4">
@@ -9,36 +9,20 @@
                 <i class="fas fa-bars text-lg"></i>
             </button>
 
-            <!-- Page Title -->
-            <div class="flex items-center space-x-3">
-                <div
-                    class="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center shadow-sm">
-                    <i class="fas fa-chart-line text-white text-sm"></i>
-                </div>
-                <h1 class="text-xl font-bold text-gray-800 hidden sm:block"
-                    x-text="activeTab.charAt(0).toUpperCase() + activeTab.slice(1)"></h1>
-                <h1 class="text-lg font-bold text-gray-800 sm:hidden"
-                    x-text="activeTab.charAt(0).toUpperCase() + activeTab.slice(1)"></h1>
-            </div>
+            <!-- Breadcrumbs -->
+            <nav class="flex items-center space-x-2 text-sm">
+                <a href="{{ route('dashboard') }}" class="text-gray-500 hover:text-gray-700 transition-colors">
+                    <i class="fas fa-home mr-1"></i>
+                    Dashboard
+                </a>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+                <span class="text-gray-900 font-medium"
+                    x-text="activeTab.charAt(0).toUpperCase() + activeTab.slice(1)"></span>
+            </nav>
         </div>
 
         <!-- Right Section -->
         <div class="flex items-center space-x-4">
-            <!-- Search Bar -->
-            <div class="relative hidden md:block">
-                <input type="text" placeholder="Cari..."
-                    class="w-64 pl-10 pr-4 py-2 rounded-lg border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
-                <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
-            </div>
-
-            <!-- Notifications -->
-            <button
-                class="relative p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <i class="fas fa-bell text-lg"></i>
-                <span
-                    class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full text-xs flex items-center justify-center text-white">3</span>
-            </button>
-
             <!-- User Menu -->
             <div class="relative" x-data="{ open: false }">
                 <button @click="open = !open" @click.away="open = false"
@@ -79,15 +63,6 @@
                     </form>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- Mobile Search Bar -->
-    <div class="md:hidden px-6 pb-4">
-        <div class="relative">
-            <input type="text" placeholder="Cari..."
-                class="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
-            <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
         </div>
     </div>
 </header>

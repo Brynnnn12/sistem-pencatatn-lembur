@@ -222,13 +222,6 @@
                                 <i class="fas fa-arrow-left mr-2"></i>
                                 Kembali
                             </x-ui.button>
-                            @can('update', $upah)
-                                <x-ui.button variant="outline" size="lg" icon="fas fa-edit"
-                                    onclick="location.href='{{ route('upah.edit', $upah) }}'"
-                                    class="border-blue-500 text-blue-600 hover:bg-blue-50">
-                                    Edit
-                                </x-ui.button>
-                            @endcan
                             @can('delete', $upah)
                                 <form method="POST" action="{{ route('upah.destroy', $upah) }}"
                                     onsubmit="return confirm('Apakah Anda yakin ingin menghapus upah ini?')"

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $title ?? 'Authentication' }} - Dashboard</title>
+    <title>{{ $title ?? 'Authentication' }} - Sistem Pencatatan Lembur</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -19,6 +19,18 @@
     <div class="min-h-screen flex items-center justify-center p-3 sm:p-4 relative auth-container">
         <!-- Main Content Card -->
         <div class="w-full max-w-sm sm:max-w-md">
+            <!-- System Header -->
+            <div class="text-center mb-6">
+                <div class="flex items-center justify-center mb-4">
+                    <div
+                        class="w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl flex items-center justify-center shadow-lg">
+                        <i class="fas fa-clock text-white text-xl"></i>
+                    </div>
+                </div>
+                <h1 class="text-2xl sm:text-3xl font-bold text-white mb-2">Sistem Pencatatan Lembur</h1>
+                <p class="text-blue-200 text-sm">Kelola data lembur karyawan dengan mudah</p>
+            </div>
+
             <div
                 class="auth-card auth-form bg-white/95 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-xl sm:shadow-2xl p-4 sm:p-6 border border-white/20 max-h-[90vh] overflow-y-auto">
                 {{ $slot }}
