@@ -234,9 +234,7 @@
                 new Chart(overtimeCtx.getContext('2d'), {
                     type: 'line',
                     data: {
-                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt',
-                            'Nov', 'Des'
-                        ],
+                        labels: @json($monthlyLabels),
                         datasets: [{
                             label: 'Jumlah Catatan Lembur',
                             data: @json($monthlyOvertime),

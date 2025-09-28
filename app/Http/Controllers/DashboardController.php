@@ -25,7 +25,9 @@ class DashboardController extends Controller
         $stats = $this->getDashboardStats($user);
 
         // Ambil data lembur bulanan untuk 12 bulan terakhir
-        $monthlyOvertime = $this->getMonthlyOvertimeData($user);
+        $monthlyData = $this->getMonthlyOvertimeData($user);
+        $monthlyOvertime = $monthlyData['data'];
+        $monthlyLabels = $monthlyData['labels'];
 
         // Ambil distribusi karyawan per departemen
         $departmentStats = $this->getDepartmentStats();
@@ -36,6 +38,7 @@ class DashboardController extends Controller
         return view('dashboard.main.index', compact(
             'stats',
             'monthlyOvertime',
+            'monthlyLabels',
             'departmentStats',
             'recentOvertime'
         ));
@@ -77,6 +80,7 @@ class DashboardController extends Controller
     private function getMonthlyOvertimeData($user)
     {
         $monthlyOvertime = [];
+        $monthlyLabels = [];
         $query = CatatanLembur::query();
 
         // Filter berdasarkan karyawan jika bukan admin
@@ -91,9 +95,13 @@ class DashboardController extends Controller
                 ->whereMonth('tanggal', $date->month)
                 ->count();
             $monthlyOvertime[] = $count;
+            $monthlyLabels[] = $date->format('M Y'); // e.g., "Sep 2024"
         }
 
-        return $monthlyOvertime;
+        return [
+            'data' => $monthlyOvertime,
+            'labels' => $monthlyLabels
+        ];
     }
 
     /**
