@@ -29,7 +29,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         //pesan sukses login
-        return redirect('/')->with('success', 'Login berhasil!');
+        return redirect('/dashboard')->with('success', 'Login berhasil!');
     }
 
     /**

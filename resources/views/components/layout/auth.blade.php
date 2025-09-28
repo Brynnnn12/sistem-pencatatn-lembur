@@ -31,6 +31,8 @@
                 <p class="text-blue-200 text-sm">Kelola data lembur karyawan dengan mudah</p>
             </div>
 
+            <x-feedback.flash-messages />
+
             <div
                 class="auth-card auth-form bg-white/95 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-xl sm:shadow-2xl p-4 sm:p-6 border border-white/20 max-h-[90vh] overflow-y-auto">
                 {{ $slot }}

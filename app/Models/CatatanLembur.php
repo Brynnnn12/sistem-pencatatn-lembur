@@ -4,8 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class CatatanLembur extends Model
 {
@@ -40,6 +38,10 @@ class CatatanLembur extends Model
         return $this->hasOne(Persetujuan::class);
     }
 
+    /**
+     * Menghitung durasi lembur dalam jam
+     * ini adalah accessor untuk atribut durasi_lembur
+     */
     public function getDurasiLemburAttribute()
     {
         if ($this->jam_masuk && $this->jam_keluar) {

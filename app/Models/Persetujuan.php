@@ -21,16 +21,19 @@ class Persetujuan extends Model
         'status' => 'string',
     ];
 
-    public function catatanLembur(): BelongsTo
+    public function catatanLembur()
     {
         return $this->belongsTo(CatatanLembur::class);
     }
 
-    public function user(): BelongsTo
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * ini untuk mendapatkan warna status
+     */
     public function getStatusColorAttribute()
     {
         return match ($this->status) {
@@ -40,6 +43,9 @@ class Persetujuan extends Model
         };
     }
 
+    /**
+     * ini untuk mendapatkan ikon status
+     */
     public function getStatusIconAttribute()
     {
         return match ($this->status) {

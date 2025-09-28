@@ -78,74 +78,8 @@
         }
     </style>
 
-    <script>
-        // Global Modal Functions
-        function openModal(name) {
-            window.dispatchEvent(new CustomEvent('open-modal', {
-                detail: name
-            }));
-        }
 
-        function closeModal(name) {
-            window.dispatchEvent(new CustomEvent('close-modal', {
-                detail: name
-            }));
-        }
 
-        // SweetAlert utility functions
-        function showSuccess(title, text) {
-            Swal.fire({
-                title: title,
-                text: text,
-                icon: 'success',
-                confirmButtonColor: '#10b981',
-                confirmButtonText: 'OK'
-            });
-        }
-
-        function showError(title, text) {
-            Swal.fire({
-                title: title,
-                text: text,
-                icon: 'error',
-                confirmButtonColor: '#dc2626',
-                confirmButtonText: 'OK'
-            });
-        }
-
-        function showConfirm(title, text, callback) {
-            Swal.fire({
-                title: title,
-                text: text,
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#dc2626',
-                cancelButtonColor: '#6b7280',
-                confirmButtonText: 'Yes, do it!',
-                cancelButtonText: 'Cancel'
-            }).then((result) => {
-                if (result.isConfirmed && callback) {
-                    callback();
-                }
-            });
-        }
-
-        // Close modal on escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                // Find any open modal and close it
-                const openModals = document.querySelectorAll('[x-show="show"]');
-                openModals.forEach(modal => {
-                    if (modal.style.display !== 'none' && modal.__x) {
-                        modal.__x.$data.show = false;
-                    }
-                });
-            }
-        });
-    </script>
-
-    <!-- Alpine.js -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 </body>
 

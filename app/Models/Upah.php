@@ -16,24 +16,36 @@ class Upah extends Model
         'jumlah',
     ];
 
+    /**
+     * ini di gunakan untuk memformat jumlah upah
+     */
     protected $casts = [
         'jumlah' => 'decimal:2',
     ];
 
-    public function catatanLembur(): BelongsTo
+    /**
+     * Relasi ke model CatatanLembur
+     * ini adalah relasi belongsTo 
+     */
+    public function catatanLembur()
     {
         return $this->belongsTo(CatatanLembur::class);
     }
 
-    // Hitung jumlah upah berdasarkan durasi lembur
-    // Asumsi tarif per jam adalah 50000 (bisa disesuaikan)
-    public static function hitungJumlahUpah(CatatanLembur $catatanLembur, $tarifPerJam = 50000)
+    /**
+     * Hitung jumlah upah berdasarkan durasi lembur
+     * Asumsi tarif per jam adalah 20000 (bisa disesuaikan)
+     */
+    public static function hitungJumlahUpah(CatatanLembur $catatanLembur, $tarifPerJam = 20000)
     {
         $durasi = $catatanLembur->durasi_lembur;
         return $durasi * $tarifPerJam;
     }
 
-    // Boot method untuk auto calculate jumlah saat create/update
+    /**
+     * Boot method untuk auto calculate jumlah saat create/update
+     * ini akan dipanggil saat model di-inisialisasi
+     */
     protected static function boot()
     {
         parent::boot();
@@ -57,6 +69,9 @@ class Upah extends Model
         });
     }
 
+    /**
+     * Format jumlah upah
+     */
     public function getFormattedJumlahAttribute()
     {
         return 'Rp ' . number_format($this->jumlah, 0, ',', '.');

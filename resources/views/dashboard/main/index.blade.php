@@ -1,6 +1,27 @@
 <x-layout.dashboard title="Main">
 
     <div>
+        @hasanyrole('Pimpinan|HRD')
+            @if ($stats['persetujuan'] > 0)
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-exclamation-triangle text-yellow-400"></i>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm text-yellow-700">
+                                <strong>Peringatan:</strong> Ada <strong>{{ $stats['persetujuan'] }}</strong> permintaan
+                                lembur yang belum ditindak lanjut.
+                                <a href="{{ route('persetujuan.index') }}"
+                                    class="font-medium underline text-yellow-700 hover:text-yellow-600">
+                                    Lihat sekarang <i class="fas fa-arrow-right ml-1"></i>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            @endif
+        @endhasanyrole
         <div
             class="grid grid-cols-1 md:grid-cols-2 @hasanyrole('Pimpinan|HRD') lg:grid-cols-4 @else lg:grid-cols-3 @endhasanyrole gap-6 mb-8">
             @hasanyrole('Pimpinan|HRD')
@@ -66,8 +87,7 @@
         </div>
 
         <!-- Charts -->
-        <div
-            class="grid grid-cols-1 @hasanyrole('Pimpinan|HRD') lg:grid-cols-2 @else lg:grid-cols-1 @endhasanyrole gap-6 mb-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
             <div class="bg-white rounded-xl shadow-sm p-6">
                 <h3 class="text-lg font-semibold text-gray-800 mb-4">Catatan Lembur Bulanan</h3>
                 <canvas id="overtimeChart" height="300"></canvas>
@@ -78,74 +98,132 @@
                     <h3 class="text-lg font-semibold text-gray-800 mb-4">Distribusi Karyawan per Departemen</h3>
                     <canvas id="departmentChart" height="300"></canvas>
                 </div>
+            @else
+                <!-- Recent Activity for Karyawan -->
+                <div class="bg-white rounded-xl shadow-sm p-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Catatan Lembur Terbaru</h3>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead>
+                                <tr>
+                                    <th
+                                        class="px-4 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Karyawan</th>
+                                    <th
+                                        class="px-4 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Tanggal</th>
+                                    <th
+                                        class="px-4 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Jam Kerja</th>
+                                    <th
+                                        class="px-4 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Durasi</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                @forelse($recentOvertime as $overtime)
+                                    <tr>
+                                        <td class="px-4 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="flex-shrink-0 h-10 w-10">
+                                                    <div
+                                                        class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold">
+                                                        {{ substr($overtime->karyawan->nama, 0, 1) }}</div>
+                                                </div>
+                                                <div class="ml-4">
+                                                    <div class="text-sm font-medium text-gray-900">
+                                                        {{ $overtime->karyawan->nama }}</div>
+                                                    <div class="text-sm text-gray-500">
+                                                        {{ $overtime->karyawan->jabatan->name }}</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            {{ $overtime->tanggal->format('d M Y') }}</td>
+                                        <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            {{ $overtime->jam_masuk->format('H:i') }} -
+                                            {{ $overtime->jam_keluar->format('H:i') }}</td>
+                                        <td class="px-4 py-4 whitespace-nowrap">
+                                            <span
+                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">{{ $overtime->durasi_lembur }}
+                                                jam</span>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="4" class="px-4 py-8 text-center text-gray-500">Belum ada catatan
+                                            lembur</td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             @endhasanyrole
         </div>
 
-        <!-- Recent Activity -->
-        <div class="bg-white rounded-xl shadow-sm p-6">
-            <h3 class="text-lg font-semibold text-gray-800 mb-4">Catatan Lembur Terbaru</h3>
-            <div class="overflow-x-auto">
-                <table class="min-w-full divide-y divide-gray-200">
-                    <thead>
-                        <tr>
-                            <th
-                                class="px-4 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Karyawan</th>
-                            <th
-                                class="px-4 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Tanggal</th>
-                            <th
-                                class="px-4 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Jam Kerja</th>
-                            <th
-                                class="px-4 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Durasi</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        @forelse($recentOvertime as $overtime)
+        @hasanyrole('Pimpinan|HRD')
+            <!-- Recent Activity for Pimpinan/HRD -->
+            <div class="bg-white rounded-xl shadow-sm p-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Catatan Lembur Terbaru</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead>
                             <tr>
-                                <td class="px-4 py-4 whitespace-nowrap">
-                                    <div class="flex items-center">
-                                        <div class="flex-shrink-0 h-10 w-10">
-                                            <div
-                                                class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold">
-                                                {{ substr($overtime->karyawan->nama, 0, 1) }}</div>
-                                        </div>
-                                        <div class="ml-4">
-                                            <div class="text-sm font-medium text-gray-900">
-                                                {{ $overtime->karyawan->nama }}
+                                <th
+                                    class="px-4 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Karyawan</th>
+                                <th
+                                    class="px-4 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Tanggal</th>
+                                <th
+                                    class="px-4 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Jam Kerja</th>
+                                <th
+                                    class="px-4 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Durasi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            @forelse($recentOvertime as $overtime)
+                                <tr>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10">
+                                                <div
+                                                    class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold">
+                                                    {{ substr($overtime->karyawan->nama, 0, 1) }}</div>
                                             </div>
-                                            <div class="text-sm text-gray-500">
-                                                {{ $overtime->karyawan->jabatan->name }}</div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">
+                                                    {{ $overtime->karyawan->nama }}</div>
+                                                <div class="text-sm text-gray-500">{{ $overtime->karyawan->jabatan->name }}
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    {{ $overtime->tanggal->format('d M Y') }}
-                                </td>
-                                <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    {{ $overtime->jam_masuk->format('H:i') }} -
-                                    {{ $overtime->jam_keluar->format('H:i') }}
-                                </td>
-                                <td class="px-4 py-4 whitespace-nowrap">
-                                    <span
-                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                        {{ $overtime->durasi_lembur }} jam
-                                    </span>
-                                </td>
-                            </tr>
-                        @empty
-                            <tr>
-                                <td colspan="4" class="px-4 py-8 text-center text-gray-500">
-                                    Belum ada catatan lembur
-                                </td>
-                            </tr>
-                        @endforelse
-                    </tbody>
-                </table>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        {{ $overtime->tanggal->format('d M Y') }}</td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        {{ $overtime->jam_masuk->format('H:i') }} -
+                                        {{ $overtime->jam_keluar->format('H:i') }}</td>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <span
+                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">{{ $overtime->durasi_lembur }}
+                                            jam</span>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="4" class="px-4 py-8 text-center text-gray-500">Belum ada catatan lembur
+                                    </td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
+        @endhasanyrole
     </div>
 
     <script>

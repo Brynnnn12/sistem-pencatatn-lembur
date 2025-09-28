@@ -34,7 +34,7 @@
             </a>
 
             <!-- Admin & Management Menu -->
-            @if (Auth::user()->hasRole('Pimpinan') || Auth::user()->hasRole('HRD'))
+            @if (Auth::user()->hasAnyRole(['Pimpinan', 'HRD']))
                 <div class="pt-6">
                     <p class="text-xs font-semibold text-blue-300 uppercase tracking-wider mb-4 px-4">Management</p>
                     @if (Auth::user()->hasRole('Pimpinan'))
@@ -96,7 +96,7 @@
             @else
                 <div class="pt-6">
                     <p class="text-xs font-semibold text-blue-300 uppercase tracking-wider mb-4 px-4">Menu</p>
-                    <a href="{{ route('catatan-lembur.create') }}"
+                    <a href="{{ route('catatan-lembur.index') }}"
                         class="group flex items-center px-4 py-3 rounded-xl transition-all duration-300 hover:bg-white/10 hover:shadow-lg hover:scale-[1.02] hover:translate-x-1 {{ request()->routeIs('catatan-lembur.create') ? 'bg-white/20 shadow-lg scale-[1.02] translate-x-1' : '' }}">
                         <div
                             class="w-8 h-8 bg-yellow-600/50 rounded-lg flex items-center justify-center mr-3 group-hover:bg-yellow-500 transition-all duration-300 group-hover:rotate-12">

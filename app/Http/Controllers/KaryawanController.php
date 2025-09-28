@@ -46,17 +46,18 @@ class KaryawanController extends Controller
     {
         $this->authorize('create', Karyawan::class);
 
-        // Create user first
+        //buat user terlebih dahulu
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'email_verified_at' => now(),
         ]);
 
-        // Assign role karyawan to user
+        // Berikan peran karyawan kepada user
         $user->assignRole('Karyawan');
 
-        // Create karyawan
+        // Buat karyawan
         Karyawan::create([
             'user_id' => $user->id,
             'nama' => $request->nama,
@@ -64,6 +65,7 @@ class KaryawanController extends Controller
             'jabatan_id' => $request->jabatan_id,
         ]);
 
+        //lempar data 
         return redirect()->route('karyawan.index')->with('success', 'Karyawan berhasil ditambahkan.');
     }
 
@@ -75,7 +77,7 @@ class KaryawanController extends Controller
         $this->authorize('view', $karyawan);
         $karyawan->load(['user', 'departemen', 'jabatan', 'catatanLemburs']);
 
-        // Calculate stats for karyawan view
+        //ini untuk menghitung statistik
         $totalLembur = $karyawan->catatanLemburs()->count();
         $totalDisetujui = $karyawan->catatanLemburs()->whereHas('persetujuan', function ($q) {
             $q->where('status', 'disetujui');

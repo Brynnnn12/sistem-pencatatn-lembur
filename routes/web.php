@@ -9,14 +9,17 @@ use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\CatatanLemburController;
 use App\Http\Controllers\PersetujuanController;
 use App\Http\Controllers\UpahController;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
+    if (Auth::check()) {
+        return redirect('/dashboard');
+    }
     return view('auth.login');
 });
 
 
-
-Route::prefix('dashboard')->middleware(['auth'])->group(function () {
+Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 
