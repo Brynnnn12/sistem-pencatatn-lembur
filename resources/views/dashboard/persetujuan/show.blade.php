@@ -46,7 +46,7 @@
                                 </h3>
                                 <div class="space-y-2">
                                     <p class="text-sm text-gray-600">Nama: <span
-                                            class="font-medium">{{ $persetujuan->user ? $persetujuan->user->name : 'Belum ditentukan' }}</span>
+                                            class="font-medium">{{ $persetujuan->user ? $persetujuan->user->karyawan->nama : 'Belum ditentukan' }}</span>
                                     </p>
                                     <p class="text-sm text-gray-600">Email: <span
                                             class="font-medium">{{ $persetujuan->user ? $persetujuan->user->email : '-' }}</span>
@@ -190,7 +190,7 @@
                                     <div class="flex justify-between">
                                         <span class="text-gray-600">Approver:</span>
                                         <span
-                                            class="font-medium">{{ $persetujuan->user ? $persetujuan->user->name : 'Belum ditentukan' }}</span>
+                                            class="font-medium">{{ $persetujuan->user ? $persetujuan->user->karyawan->nama : 'Belum ditentukan' }}</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span class="text-gray-600">Email:</span>

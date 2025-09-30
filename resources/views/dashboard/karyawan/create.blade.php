@@ -21,13 +21,13 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
-                                Nama Lengkap <span class="text-red-500">*</span>
+                            <label for="nik" class="block text-sm font-medium text-gray-700 mb-2">
+                                NIK <span class="text-red-500">*</span>
                             </label>
-                            <input type="text" name="name" id="name" value="{{ old('name') }}"
-                                class="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-teal-500 focus:border-teal-500 @if ($errors->has('name')) border-red-500 @endif"
+                            <input type="number" name="nik" id="nik" value="{{ old('nik') }}"
+                                class="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-teal-500 focus:border-teal-500 @if ($errors->has('nik')) border-red-500 @endif"
                                 required>
-                            @error('name')
+                            @error('nik')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>

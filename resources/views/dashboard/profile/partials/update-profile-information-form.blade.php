@@ -18,10 +18,10 @@
         @method('patch')
 
         <div>
-            <x-ui.input-label for="name" :value="__('Name')" />
-            <x-ui.text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)"
-                required autofocus autocomplete="name" />
-            <x-ui.input-error class="mt-2" :messages="$errors->get('name')" />
+            <x-ui.input-label for="nik" :value="__('NIK')" />
+            <x-ui.text-input id="nik" name="nik" type="number" class="mt-1 block w-full" :value="old('nik', $user->nik)"
+                required autofocus autocomplete="nik" />
+            <x-ui.input-error class="mt-2" :messages="$errors->get('nik')" />
         </div>
 
         <div>

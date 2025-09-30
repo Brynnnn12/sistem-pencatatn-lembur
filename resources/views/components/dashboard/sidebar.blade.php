@@ -145,10 +145,10 @@
         <div class="flex items-center mb-4 p-3 rounded-xl bg-white/5 hover:bg-white/10 transition-colors">
             <div
                 class="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center shadow-lg mr-3">
-                <span class="font-bold text-white">{{ substr(Auth::user()->name, 0, 1) }}</span>
+                <span class="font-bold text-white">{{ substr(Auth::user()->karyawan->nama, 0, 1) }}</span>
             </div>
             <div class="flex-1 min-w-0">
-                <p class="font-medium text-white truncate">{{ Auth::user()->name }}</p>
+                <p class="font-medium text-white truncate">{{ Auth::user()->karyawan->nama }}</p>
                 <p class="text-xs text-blue-300 truncate">{{ Auth::user()->email }}</p>
             </div>
         </div>

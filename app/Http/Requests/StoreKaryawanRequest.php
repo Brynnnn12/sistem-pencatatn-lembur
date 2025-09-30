@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * @property string $name
+ * @property int $nik
  * @property string $email
  * @property string $password
  * @property string $nama
@@ -31,7 +31,7 @@ class StoreKaryawanRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255',
+            'nik' => 'required|integer|unique:users,nik',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
             'nama' => 'required|string|max:255',
@@ -44,9 +44,9 @@ class StoreKaryawanRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => 'Nama lengkap harus diisi.',
-            'name.string' => 'Nama lengkap harus berupa teks.',
-            'name.max' => 'Nama lengkap tidak boleh lebih dari 255 karakter.',
+            'nik.required' => 'NIK harus diisi.',
+            'nik.integer' => 'NIK harus berupa angka.',
+            'nik.unique' => 'NIK sudah digunakan.',
             'email.required' => 'Email harus diisi.',
             'email.email' => 'Format email tidak valid.',
             'email.unique' => 'Email sudah digunakan.',

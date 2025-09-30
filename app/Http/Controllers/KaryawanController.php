@@ -48,7 +48,7 @@ class KaryawanController extends Controller
 
         //buat user terlebih dahulu
         $user = User::create([
-            'name' => $request->name,
+            'nik' => $request->nik,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'email_verified_at' => now(),
@@ -109,7 +109,7 @@ class KaryawanController extends Controller
 
         // Update user
         $karyawan->user->update([
-            'name' => $request->name,
+            'nik' => $request->nik,
             'email' => $request->email,
         ]);
 

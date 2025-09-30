@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Karyawan;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -26,22 +27,38 @@ class RoleSeeder extends Seeder
          * membuat user pimpinan
          */
         $pimpinan = User::create([
-            'name' => 'Pimpinan',
+            'nik' => 11111111,
             'email' => 'pimpinan@example.com',
             'password' => bcrypt('password'),
             'email_verified_at' => now()
         ]);
         $pimpinan->assignRole('Pimpinan');
 
+        // Create karyawan for pimpinan
+        Karyawan::create([
+            'user_id' => $pimpinan->id,
+            'nama' => 'Pimpinan',
+            'departemen_id' => 1, // HRD
+            'jabatan_id' => 1, // Manager
+        ]);
+
         /**
          * membuat user HRD
          */
         $hrd = \App\Models\User::create([
-            'name' => 'HRD',
+            'nik' => 22222222,
             'email' => 'hrd@example.com',
             'password' => bcrypt('password'),
             'email_verified_at' => now()
         ]);
         $hrd->assignRole('HRD');
+
+        // Create karyawan for hrd
+        Karyawan::create([
+            'user_id' => $hrd->id,
+            'nama' => 'HRD',
+            'departemen_id' => 1, // HRD
+            'jabatan_id' => 1, // Manager
+        ]);
     }
 }

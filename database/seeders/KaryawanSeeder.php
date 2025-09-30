@@ -19,7 +19,7 @@ class KaryawanSeeder extends Seeder
         $karyawans = [
             [
                 'user' => [
-                    'name' => 'John Doe',
+                    'nik' => 10000001,
                     'email' => 'john@example.com',
                     'password' => Hash::make('password'),
                 ],
@@ -29,7 +29,7 @@ class KaryawanSeeder extends Seeder
             ],
             [
                 'user' => [
-                    'name' => 'Jane Smith',
+                    'nik' => 10000002,
                     'email' => 'jane@example.com',
                     'password' => Hash::make('password'),
                 ],
@@ -39,7 +39,7 @@ class KaryawanSeeder extends Seeder
             ],
             [
                 'user' => [
-                    'name' => 'Bob Johnson',
+                    'nik' => 10000003,
                     'email' => 'bob@example.com',
                     'password' => Hash::make('password'),
                 ],
@@ -49,7 +49,7 @@ class KaryawanSeeder extends Seeder
             ],
             [
                 'user' => [
-                    'name' => 'Alice Brown',
+                    'nik' => 10000004,
                     'email' => 'alice@example.com',
                     'password' => Hash::make('password'),
                 ],
@@ -59,7 +59,7 @@ class KaryawanSeeder extends Seeder
             ],
             [
                 'user' => [
-                    'name' => 'Charlie Wilson',
+                    'nik' => 10000005,
                     'email' => 'charlie@example.com',
                     'password' => Hash::make('password'),
                 ],
@@ -69,7 +69,7 @@ class KaryawanSeeder extends Seeder
             ],
             [
                 'user' => [
-                    'name' => 'Diana Prince',
+                    'nik' => 10000006,
                     'email' => 'diana@example.com',
                     'password' => Hash::make('password'),
                 ],
@@ -79,7 +79,7 @@ class KaryawanSeeder extends Seeder
             ],
             [
                 'user' => [
-                    'name' => 'Edward Norton',
+                    'nik' => 10000007,
                     'email' => 'edward@example.com',
                     'password' => Hash::make('password'),
                 ],
@@ -89,7 +89,7 @@ class KaryawanSeeder extends Seeder
             ],
             [
                 'user' => [
-                    'name' => 'Fiona Green',
+                    'nik' => 10000008,
                     'email' => 'fiona@example.com',
                     'password' => Hash::make('password'),
                 ],

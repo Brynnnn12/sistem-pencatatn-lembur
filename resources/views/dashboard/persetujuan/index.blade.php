@@ -26,7 +26,7 @@
                         {{ $persetujuan->catatanLembur->karyawan->nama }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {{ $persetujuan->user ? $persetujuan->user->name : 'Belum ditentukan' }}
+                        {{ $persetujuan->user ? $persetujuan->user->karyawan->nama : 'Belum ditentukan' }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
                         <span

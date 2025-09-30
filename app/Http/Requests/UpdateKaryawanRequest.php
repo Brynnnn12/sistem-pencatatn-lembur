@@ -3,9 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 /**
- * @property string $name
+ * @property int $nik
  * @property string $email
  * @property string|null $password
  * @property string $nama
@@ -31,9 +32,18 @@ class UpdateKaryawanRequest extends FormRequest
      */
     public function rules(): array
     {
+        $karyawan = $this->route('karyawan');
         return [
-            'name' => 'required|string|max:255',
-            'email' => 'required|email',
+            'nik' => [
+                'required',
+                'integer',
+                Rule::unique('users', 'nik')->ignore($karyawan->user_id),
+            ],
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users', 'email')->ignore($karyawan->user_id),
+            ],
             'password' => 'nullable|string|min:8|confirmed',
             'nama' => 'required|string|max:255',
             'phone' => 'nullable|string|max:20',
@@ -45,9 +55,9 @@ class UpdateKaryawanRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => 'Nama lengkap harus diisi.',
-            'name.string' => 'Nama lengkap harus berupa teks.',
-            'name.max' => 'Nama lengkap tidak boleh lebih dari 255 karakter.',
+            'nik.required' => 'NIK harus diisi.',
+            'nik.integer' => 'NIK harus berupa angka.',
+            'nik.unique' => 'NIK sudah digunakan.',
             'email.required' => 'Email harus diisi.',
             'email.email' => 'Format email tidak valid.',
             'email.unique' => 'Email sudah digunakan.',

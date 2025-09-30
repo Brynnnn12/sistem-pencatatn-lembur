@@ -84,7 +84,7 @@
                         <div class="p-6 space-y-4">
                             <div class="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
                                 <span class="text-gray-600 font-medium">Nama Lengkap:</span>
-                                <span class="font-semibold text-gray-800">{{ $karyawan->user->name }}</span>
+                                <span class="font-semibold text-gray-800">{{ $karyawan->nama }}</span>
                             </div>
                             <div class="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
                                 <span class="text-gray-600 font-medium">Email:</span>
@@ -175,7 +175,7 @@
                                 <div class="space-y-3">
                                     <div class="flex justify-between">
                                         <span class="text-gray-600">Nama Lengkap:</span>
-                                        <span class="font-medium">{{ $karyawan->user->name }}</span>
+                                        <span class="font-medium">{{ $karyawan->nama }}</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span class="text-gray-600">Email:</span>
