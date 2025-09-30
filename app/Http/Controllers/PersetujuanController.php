@@ -8,13 +8,31 @@ use App\Models\User;
 use App\Models\Upah;
 use App\Http\Requests\StorePersetujuanRequest;
 use App\Http\Requests\UpdatePersetujuanRequest;
+use App\Services\FonnteService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class PersetujuanController extends Controller
 {
+    /**
+     * ini adalah trait yang digunakan untuk mengatur otorisasi
+     */
     use AuthorizesRequests;
+
+    /**
+     * ini adalah properti untuk menyimpan instance dari FonnteService
+     */
+    protected $fonnteService;
+
+    /**
+     * construct di gunakan untuk menginisialisasi dependensi
+     
+     */
+    public function __construct(FonnteService $fonnteService)
+    {
+        $this->fonnteService = $fonnteService;
+    }
     /**
      * Display a listing of the resource.
      */
@@ -103,6 +121,10 @@ class PersetujuanController extends Controller
             $persetujuan->update(['user_id' => Auth::id()]);
         }
 
+        // Kirim notifikasi WhatsApp
+        $karyawan = $persetujuan->catatanLembur->karyawan;
+        $approver = Auth::user();
+        $this->fonnteService->sendApprovalNotification($persetujuan, $karyawan, $approver, $request->status);
         return redirect()->route('persetujuan.index')->with('success', 'Status persetujuan berhasil diperbarui.');
     }
 

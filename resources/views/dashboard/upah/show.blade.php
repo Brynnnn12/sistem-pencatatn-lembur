@@ -26,11 +26,11 @@
                                 </h3>
                                 <div class="space-y-2">
                                     <p class="text-sm text-gray-600">Tanggal: <span
-                                            class="font-medium">{{ $upah->catatanLembur->tanggal->format('l, d F Y') }}</span>
+                                            class="font-medium">{{ $upah->catatanLembur->tanggal->translatedFormat('l, d F Y') }}</span>
                                     </p>
                                     <p class="text-sm text-gray-600">Jam: <span
-                                            class="font-medium">{{ $upah->catatanLembur->jam_masuk->format('H:i') }} -
-                                            {{ $upah->catatanLembur->jam_keluar->format('H:i') }}</span></p>
+                                            class="font-medium">{{ $upah->catatanLembur->jam_masuk_formatted }} -
+                                            {{ $upah->catatanLembur->jam_keluar_formatted }}</span></p>
                                     <p class="text-sm text-gray-600">Durasi: <span
                                             class="font-medium">{{ $upah->catatanLembur->durasi_lembur }} jam</span></p>
                                 </div>
@@ -66,7 +66,7 @@
                                     <p class="text-sm text-gray-600">Jam Lembur</p>
                                 </div>
                                 <div class="text-center">
-                                    <p class="text-2xl font-bold text-gray-800">Rp 50.000</p>
+                                    <p class="text-2xl font-bold text-gray-800">Rp 20.000</p>
                                     <p class="text-sm text-gray-600">Tarif per Jam</p>
                                 </div>
                                 <div class="text-center">
@@ -124,12 +124,12 @@
                                         <div class="flex justify-between">
                                             <span class="text-gray-600">Jam Masuk:</span>
                                             <span
-                                                class="font-medium">{{ $upah->catatanLembur->jam_masuk->format('H:i') }}</span>
+                                                class="font-medium">{{ $upah->catatanLembur->jam_masuk_formatted }}</span>
                                         </div>
                                         <div class="flex justify-between">
                                             <span class="text-gray-600">Jam Keluar:</span>
                                             <span
-                                                class="font-medium">{{ $upah->catatanLembur->jam_keluar->format('H:i') }}</span>
+                                                class="font-medium">{{ $upah->catatanLembur->jam_keluar_formatted }}</span>
                                         </div>
                                         <div class="flex justify-between">
                                             <span class="text-gray-600">Durasi:</span>
@@ -181,7 +181,7 @@
                                             </div>
                                             <div class="flex justify-between items-center">
                                                 <span class="text-gray-700">Tarif per Jam:</span>
-                                                <span class="font-semibold">Rp 50.000</span>
+                                                <span class="font-semibold">Rp 20.000</span>
                                             </div>
                                             <hr class="border-green-200">
                                             <div class="flex justify-between items-center text-lg">

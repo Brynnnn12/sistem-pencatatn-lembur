@@ -30,7 +30,7 @@
                                     data-durasi="{{ $catatanLembur->durasi_lembur }}"
                                     data-karyawan="{{ $catatanLembur->karyawan->nama }}"
                                     data-tanggal="{{ $catatanLembur->tanggal->format('d M Y') }}"
-                                    data-jam="{{ $catatanLembur->jam_masuk->format('H:i') }} - {{ $catatanLembur->jam_keluar->format('H:i') }}">
+                                    data-jam="{{ $catatanLembur->jam_masuk_formatted }} - {{ $catatanLembur->jam_keluar_formatted }}">
                                     {{ $catatanLembur->tanggal->format('d M Y') }} -
                                     {{ $catatanLembur->karyawan->nama }} ({{ $catatanLembur->durasi_lembur }} jam)
                                 </option>

@@ -61,6 +61,7 @@ class KaryawanController extends Controller
         Karyawan::create([
             'user_id' => $user->id,
             'nama' => $request->nama,
+            'phone' => $request->phone,
             'departemen_id' => $request->departemen_id,
             'jabatan_id' => $request->jabatan_id,
         ]);
@@ -122,6 +123,7 @@ class KaryawanController extends Controller
         // Update karyawan
         $karyawan->update([
             'nama' => $request->nama,
+            'phone' => $request->phone,
             'departemen_id' => $request->departemen_id,
             'jabatan_id' => $request->jabatan_id,
         ]);

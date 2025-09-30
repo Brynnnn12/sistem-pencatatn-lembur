@@ -141,8 +141,8 @@
                                         <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
                                             {{ $overtime->tanggal->format('d M Y') }}</td>
                                         <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            {{ $overtime->jam_masuk->format('H:i') }} -
-                                            {{ $overtime->jam_keluar->format('H:i') }}</td>
+                                            {{ $overtime->jam_masuk_formatted }} -
+                                            {{ $overtime->jam_keluar_formatted }}</td>
                                         <td class="px-4 py-4 whitespace-nowrap">
                                             <span
                                                 class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">{{ $overtime->durasi_lembur }}
@@ -205,8 +205,8 @@
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
                                         {{ $overtime->tanggal->format('d M Y') }}</td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        {{ $overtime->jam_masuk->format('H:i') }} -
-                                        {{ $overtime->jam_keluar->format('H:i') }}</td>
+                                        {{ $overtime->jam_masuk_formatted }} -
+                                        {{ $overtime->jam_keluar_formatted }}</td>
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <span
                                             class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">{{ $overtime->durasi_lembur }}

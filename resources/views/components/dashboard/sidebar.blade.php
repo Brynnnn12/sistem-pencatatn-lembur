@@ -56,42 +56,42 @@
                             <span class="font-medium">Departemen</span>
                         </a>
 
-                        <a href="{{ route('karyawan.index') }}"
-                            class="group flex items-center px-4 py-3 rounded-xl transition-all duration-300 hover:bg-white/10 hover:shadow-lg hover:scale-[1.02] hover:translate-x-1 {{ request()->routeIs('karyawan.*') ? 'bg-white/20 shadow-lg scale-[1.02] translate-x-1' : '' }}">
-                            <div
-                                class="w-8 h-8 bg-indigo-600/50 rounded-lg flex items-center justify-center mr-3 group-hover:bg-indigo-500 transition-all duration-300 group-hover:rotate-12">
-                                <i class="fas fa-users text-sm"></i>
-                            </div>
-                            <span class="font-medium">Karyawan</span>
+
                         </a>
                     @endif
-
-                    <a href="{{ route('catatan-lembur.index') }}"
-                        class="group flex items-center px-4 py-3 rounded-xl transition-all duration-300 hover:bg-white/10 hover:shadow-lg hover:scale-[1.02] hover:translate-x-1 {{ request()->routeIs('catatan-lembur.*') ? 'bg-white/20 shadow-lg scale-[1.02] translate-x-1' : '' }}">
+                    <a href="{{ route('karyawan.index') }}"
+                        class="group flex items-center px-4 py-3 rounded-xl transition-all duration-300 hover:bg-white/10 hover:shadow-lg hover:scale-[1.02] hover:translate-x-1 {{ request()->routeIs('karyawan.*') ? 'bg-white/20 shadow-lg scale-[1.02] translate-x-1' : '' }}">
                         <div
-                            class="w-8 h-8 bg-yellow-600/50 rounded-lg flex items-center justify-center mr-3 group-hover:bg-yellow-500 transition-all duration-300 group-hover:rotate-12">
-                            <i class="fas fa-clock text-sm"></i>
+                            class="w-8 h-8 bg-indigo-600/50 rounded-lg flex items-center justify-center mr-3 group-hover:bg-indigo-500 transition-all duration-300 group-hover:rotate-12">
+                            <i class="fas fa-users text-sm"></i>
                         </div>
-                        <span class="font-medium">Catatan Lembur</span>
-                    </a>
+                        <span class="font-medium">Karyawan</span>
+                        <a href="{{ route('catatan-lembur.index') }}"
+                            class="group flex items-center px-4 py-3 rounded-xl transition-all duration-300 hover:bg-white/10 hover:shadow-lg hover:scale-[1.02] hover:translate-x-1 {{ request()->routeIs('catatan-lembur.*') ? 'bg-white/20 shadow-lg scale-[1.02] translate-x-1' : '' }}">
+                            <div
+                                class="w-8 h-8 bg-yellow-600/50 rounded-lg flex items-center justify-center mr-3 group-hover:bg-yellow-500 transition-all duration-300 group-hover:rotate-12">
+                                <i class="fas fa-clock text-sm"></i>
+                            </div>
+                            <span class="font-medium">Catatan Lembur</span>
+                        </a>
 
-                    <a href="{{ route('persetujuan.index') }}"
-                        class="group flex items-center px-4 py-3 rounded-xl transition-all duration-300 hover:bg-white/10 hover:shadow-lg hover:scale-[1.02] hover:translate-x-1 {{ request()->routeIs('persetujuan.*') ? 'bg-white/20 shadow-lg scale-[1.02] translate-x-1' : '' }}">
-                        <div
-                            class="w-8 h-8 bg-emerald-600/50 rounded-lg flex items-center justify-center mr-3 group-hover:bg-emerald-500 transition-all duration-300 group-hover:rotate-12">
-                            <i class="fas fa-check-circle text-sm"></i>
-                        </div>
-                        <span class="font-medium">Persetujuan</span>
-                    </a>
+                        <a href="{{ route('persetujuan.index') }}"
+                            class="group flex items-center px-4 py-3 rounded-xl transition-all duration-300 hover:bg-white/10 hover:shadow-lg hover:scale-[1.02] hover:translate-x-1 {{ request()->routeIs('persetujuan.*') ? 'bg-white/20 shadow-lg scale-[1.02] translate-x-1' : '' }}">
+                            <div
+                                class="w-8 h-8 bg-emerald-600/50 rounded-lg flex items-center justify-center mr-3 group-hover:bg-emerald-500 transition-all duration-300 group-hover:rotate-12">
+                                <i class="fas fa-check-circle text-sm"></i>
+                            </div>
+                            <span class="font-medium">Persetujuan</span>
+                        </a>
 
-                    <a href="{{ route('upah.index') }}"
-                        class="group flex items-center px-4 py-3 rounded-xl transition-all duration-300 hover:bg-white/10 hover:shadow-lg hover:scale-[1.02] hover:translate-x-1 {{ request()->routeIs('upah.*') ? 'bg-white/20 shadow-lg scale-[1.02] translate-x-1' : '' }}">
-                        <div
-                            class="w-8 h-8 bg-orange-600/50 rounded-lg flex items-center justify-center mr-3 group-hover:bg-orange-500 transition-all duration-300 group-hover:rotate-12">
-                            <i class="fas fa-money-bill-wave text-sm"></i>
-                        </div>
-                        <span class="font-medium">Upah</span>
-                    </a>
+                        <a href="{{ route('upah.index') }}"
+                            class="group flex items-center px-4 py-3 rounded-xl transition-all duration-300 hover:bg-white/10 hover:shadow-lg hover:scale-[1.02] hover:translate-x-1 {{ request()->routeIs('upah.*') ? 'bg-white/20 shadow-lg scale-[1.02] translate-x-1' : '' }}">
+                            <div
+                                class="w-8 h-8 bg-orange-600/50 rounded-lg flex items-center justify-center mr-3 group-hover:bg-orange-500 transition-all duration-300 group-hover:rotate-12">
+                                <i class="fas fa-money-bill-wave text-sm"></i>
+                            </div>
+                            <span class="font-medium">Upah</span>
+                        </a>
                 </div>
             @else
                 <div class="pt-6">

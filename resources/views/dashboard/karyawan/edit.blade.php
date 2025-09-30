@@ -88,6 +88,19 @@
                         </div>
 
                         <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">
+                                Nomor Telepon
+                            </label>
+                            <input type="text" name="phone" id="phone"
+                                value="{{ old('phone', $karyawan->phone) }}"
+                                class="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-teal-500 focus:border-teal-500 @if ($errors->has('phone')) border-red-500 @endif"
+                                placeholder="Contoh: 6281234567890">
+                            @error('phone')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div>
                             <label for="departemen_id" class="block text-sm font-medium text-gray-700 mb-2">
                                 Departemen <span class="text-red-500">*</span>
                             </label>

@@ -9,6 +9,7 @@ use Illuminate\Foundation\Http\FormRequest;
  * @property string $email
  * @property string $password
  * @property string $nama
+ * @property string|null $phone
  * @property int $departemen_id
  * @property int $jabatan_id
  */
@@ -34,6 +35,7 @@ class StoreKaryawanRequest extends FormRequest
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
             'nama' => 'required|string|max:255',
+            'phone' => 'nullable|string|max:20',
             'departemen_id' => 'required|exists:departemens,id',
             'jabatan_id' => 'required|exists:jabatans,id',
         ];
@@ -54,6 +56,8 @@ class StoreKaryawanRequest extends FormRequest
             'nama.required' => 'Nama karyawan harus diisi.',
             'nama.string' => 'Nama karyawan harus berupa teks.',
             'nama.max' => 'Nama karyawan tidak boleh lebih dari 255 karakter.',
+            'phone.string' => 'Nomor telepon harus berupa teks.',
+            'phone.max' => 'Nomor telepon tidak boleh lebih dari 20 karakter.',
             'departemen_id.required' => 'Departemen harus dipilih.',
             'departemen_id.exists' => 'Departemen yang dipilih tidak valid.',
             'jabatan_id.required' => 'Jabatan harus dipilih.',

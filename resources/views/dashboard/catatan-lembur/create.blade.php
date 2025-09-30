@@ -57,8 +57,8 @@
                                 Jam Masuk (WIB, format 24 jam) <span class="text-red-500">*</span>
                             </label>
                             <input type="time" name="jam_masuk" id="jam_masuk" value="{{ old('jam_masuk') }}"
-                                class="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 @if ($errors->has('jam_masuk')) border-red-500 @endif"
-                                placeholder="HH:MM" required>
+                                class="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 @error('jam_masuk') border-red-500 @enderror"
+                                required>
                             @error('jam_masuk')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -69,8 +69,8 @@
                                 Jam Keluar (WIB, format 24 jam) <span class="text-red-500">*</span>
                             </label>
                             <input type="time" name="jam_keluar" id="jam_keluar" value="{{ old('jam_keluar') }}"
-                                class="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 @if ($errors->has('jam_keluar')) border-red-500 @endif"
-                                placeholder="HH:MM" required>
+                                class="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 @error('jam_keluar') border-red-500 @enderror"
+                                required>
                             @error('jam_keluar')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -91,4 +91,6 @@
             </div>
         </div>
     </div>
+
+
 </x-layout.dashboard>

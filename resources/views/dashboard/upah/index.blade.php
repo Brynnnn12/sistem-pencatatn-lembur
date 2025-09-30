@@ -15,8 +15,8 @@
                             {{ $upah->catatanLembur->tanggal->format('d M Y') }}
                         </div>
                         <div class="text-sm text-gray-500">
-                            {{ $upah->catatanLembur->jam_masuk->format('H:i') }} -
-                            {{ $upah->catatanLembur->jam_keluar->format('H:i') }}
+                            {{ $upah->catatanLembur->jam_masuk_formatted }} -
+                            {{ $upah->catatanLembur->jam_keluar_formatted }}
                         </div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">

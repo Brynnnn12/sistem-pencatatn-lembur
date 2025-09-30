@@ -61,7 +61,7 @@
                             <input type="time" name="jam_masuk" id="jam_masuk"
                                 value="{{ old('jam_masuk', $catatanLembur->jam_masuk->format('H:i')) }}"
                                 class="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 @if ($errors->has('jam_masuk')) border-red-500 @endif"
-                                placeholder="HH:MM" required>
+                                required>
                             @error('jam_masuk')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -74,7 +74,7 @@
                             <input type="time" name="jam_keluar" id="jam_keluar"
                                 value="{{ old('jam_keluar', $catatanLembur->jam_keluar->format('H:i')) }}"
                                 class="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 @if ($errors->has('jam_keluar')) border-red-500 @endif"
-                                placeholder="HH:MM" required>
+                                required>
                             @error('jam_keluar')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror

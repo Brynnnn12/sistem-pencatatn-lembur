@@ -78,18 +78,16 @@
                                 </div>
                                 <span class="font-medium">Departemen</span>
                             </a>
-
-                            <a href="{{ route('karyawan.index') }}"
-                                class="group flex items-center px-4 py-3 rounded-xl transition-all duration-300 hover:bg-white/10 hover:shadow-lg hover:scale-[1.02] hover:translate-x-1 {{ request()->routeIs('karyawan.*') ? 'bg-white/20 shadow-lg scale-[1.02] translate-x-1' : '' }}"
-                                @click="isSidebarOpen = false">
-                                <div
-                                    class="w-8 h-8 bg-indigo-600/50 rounded-lg flex items-center justify-center mr-3 group-hover:bg-indigo-500 transition-all duration-300 group-hover:rotate-12">
-                                    <i class="fas fa-users text-sm"></i>
-                                </div>
-                                <span class="font-medium">Karyawan</span>
-                            </a>
                         @endif
-
+                        <a href="{{ route('karyawan.index') }}"
+                            class="group flex items-center px-4 py-3 rounded-xl transition-all duration-300 hover:bg-white/10 hover:shadow-lg hover:scale-[1.02] hover:translate-x-1 {{ request()->routeIs('karyawan.*') ? 'bg-white/20 shadow-lg scale-[1.02] translate-x-1' : '' }}"
+                            @click="isSidebarOpen = false">
+                            <div
+                                class="w-8 h-8 bg-indigo-600/50 rounded-lg flex items-center justify-center mr-3 group-hover:bg-indigo-500 transition-all duration-300 group-hover:rotate-12">
+                                <i class="fas fa-users text-sm"></i>
+                            </div>
+                            <span class="font-medium">Karyawan</span>
+                        </a>
                         <a href="{{ route('catatan-lembur.index') }}"
                             class="group flex items-center px-4 py-3 rounded-xl transition-all duration-300 hover:bg-white/10 hover:shadow-lg hover:scale-[1.02] hover:translate-x-1 {{ request()->routeIs('catatan-lembur.*') ? 'bg-white/20 shadow-lg scale-[1.02] translate-x-1' : '' }}"
                             @click="isSidebarOpen = false">

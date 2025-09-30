@@ -18,8 +18,8 @@
                             <div class="text-sm text-gray-900">
                                 {{ $persetujuan->catatanLembur->tanggal->format('d M Y') }}</div>
                             <div class="text-sm text-gray-500">
-                                {{ $persetujuan->catatanLembur->jam_masuk->format('H:i') }} -
-                                {{ $persetujuan->catatanLembur->jam_keluar->format('H:i') }}</div>
+                                {{ $persetujuan->catatanLembur->jam_masuk_formatted }} -
+                                {{ $persetujuan->catatanLembur->jam_keluar_formatted }}</div>
                         </div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">

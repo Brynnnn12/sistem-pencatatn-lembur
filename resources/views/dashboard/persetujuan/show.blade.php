@@ -32,8 +32,8 @@
                                             class="font-medium">{{ $persetujuan->catatanLembur->tanggal->format('l, d F Y') }}</span>
                                     </p>
                                     <p class="text-sm text-gray-600">Jam: <span
-                                            class="font-medium">{{ $persetujuan->catatanLembur->jam_masuk->format('H:i') }}
-                                            - {{ $persetujuan->catatanLembur->jam_keluar->format('H:i') }}</span></p>
+                                            class="font-medium">{{ $persetujuan->catatanLembur->jam_masuk_formatted }}
+                                            - {{ $persetujuan->catatanLembur->jam_keluar_formatted }}</span></p>
                                     <p class="text-sm text-gray-600">Durasi: <span
                                             class="font-medium">{{ $persetujuan->catatanLembur->durasi_lembur }}
                                             jam</span></p>
@@ -154,12 +154,12 @@
                                     <div class="flex justify-between">
                                         <span class="text-gray-600">Jam Masuk:</span>
                                         <span
-                                            class="font-medium">{{ $persetujuan->catatanLembur->jam_masuk->format('H:i') }}</span>
+                                            class="font-medium">{{ $persetujuan->catatanLembur->jam_masuk_formatted }}</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span class="text-gray-600">Jam Keluar:</span>
                                         <span
-                                            class="font-medium">{{ $persetujuan->catatanLembur->jam_keluar->format('H:i') }}</span>
+                                            class="font-medium">{{ $persetujuan->catatanLembur->jam_keluar_formatted }}</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span class="text-gray-600">Durasi:</span>

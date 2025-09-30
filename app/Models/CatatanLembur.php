@@ -19,8 +19,8 @@ class CatatanLembur extends Model
 
     protected $casts = [
         'tanggal' => 'date',
-        'jam_masuk' => 'datetime:H:i',
-        'jam_keluar' => 'datetime:H:i',
+        'jam_masuk' => 'datetime',
+        'jam_keluar' => 'datetime',
     ];
 
     public function karyawan()
@@ -51,5 +51,21 @@ class CatatanLembur extends Model
             return round($durasi, 2);
         }
         return 0;
+    }
+
+    /**
+     * Accessor untuk jam_masuk dengan format WIB
+     */
+    public function getJamMasukFormattedAttribute()
+    {
+        return $this->jam_masuk ? $this->jam_masuk->format('H:i') . ' WIB' : null;
+    }
+
+    /**
+     * Accessor untuk jam_keluar dengan format WIB
+     */
+    public function getJamKeluarFormattedAttribute()
+    {
+        return $this->jam_keluar ? $this->jam_keluar->format('H:i') . ' WIB' : null;
     }
 }
