@@ -29,8 +29,10 @@
                                             class="font-medium">{{ $upah->catatanLembur->tanggal->translatedFormat('l, d F Y') }}</span>
                                     </p>
                                     <p class="text-sm text-gray-600">Jam: <span
-                                            class="font-medium">{{ $upah->catatanLembur->jam_masuk_formatted }} -
-                                            {{ $upah->catatanLembur->jam_keluar_formatted }}</span></p>
+                                            class="font-medium">{{ date('H:i', strtotime($upah->catatanLembur->jam_masuk)) }}
+                                            WIB -
+                                            {{ date('H:i', strtotime($upah->catatanLembur->jam_keluar)) }} WIB</span>
+                                    </p>
                                     <p class="text-sm text-gray-600">Durasi: <span
                                             class="font-medium">{{ $upah->catatanLembur->durasi_lembur }} jam</span></p>
                                 </div>
@@ -124,12 +126,14 @@
                                         <div class="flex justify-between">
                                             <span class="text-gray-600">Jam Masuk:</span>
                                             <span
-                                                class="font-medium">{{ $upah->catatanLembur->jam_masuk_formatted }}</span>
+                                                class="font-medium">{{ date('H:i', strtotime($upah->catatanLembur->jam_masuk)) }}
+                                                WIB</span>
                                         </div>
                                         <div class="flex justify-between">
                                             <span class="text-gray-600">Jam Keluar:</span>
                                             <span
-                                                class="font-medium">{{ $upah->catatanLembur->jam_keluar_formatted }}</span>
+                                                class="font-medium">{{ date('H:i', strtotime($upah->catatanLembur->jam_keluar)) }}
+                                                WIB</span>
                                         </div>
                                         <div class="flex justify-between">
                                             <span class="text-gray-600">Durasi:</span>

@@ -23,13 +23,13 @@
                                 <i class="fas fa-sign-in-alt text-2xl text-blue-600 mb-2"></i>
                                 <p class="text-sm text-gray-600 font-medium">Jam Masuk</p>
                                 <p class="text-3xl font-bold text-blue-700">
-                                    {{ $catatanLembur->jam_masuk_formatted }}</p>
+                                    {{ date('H:i', strtotime($catatanLembur->jam_masuk)) }} WIB</p>
                             </div>
                             <div class="bg-gradient-to-r from-green-50 to-green-100 p-6 rounded-xl text-center">
                                 <i class="fas fa-sign-out-alt text-2xl text-green-600 mb-2"></i>
                                 <p class="text-sm text-gray-600 font-medium">Jam Keluar</p>
                                 <p class="text-3xl font-bold text-green-700">
-                                    {{ $catatanLembur->jam_keluar_formatted }}</p>
+                                    {{ date('H:i', strtotime($catatanLembur->jam_keluar)) }} WIB</p>
                             </div>
                             <div class="bg-gradient-to-r from-purple-50 to-purple-100 p-6 rounded-xl text-center">
                                 <i class="fas fa-clock text-2xl text-purple-600 mb-2"></i>
@@ -157,11 +157,15 @@
                                     </div>
                                     <div class="flex justify-between">
                                         <span class="text-gray-600">Jam Masuk:</span>
-                                        <span class="font-medium">{{ $catatanLembur->jam_masuk_formatted }}</span>
+                                        <span
+                                            class="font-medium">{{ date('H:i', strtotime($catatanLembur->jam_masuk)) }}
+                                            WIB</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span class="text-gray-600">Jam Keluar:</span>
-                                        <span class="font-medium">{{ $catatanLembur->jam_keluar_formatted }}</span>
+                                        <span
+                                            class="font-medium">{{ date('H:i', strtotime($catatanLembur->jam_keluar)) }}
+                                            WIB</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span class="text-gray-600">Durasi Lembur:</span>

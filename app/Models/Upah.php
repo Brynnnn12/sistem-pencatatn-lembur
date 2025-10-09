@@ -24,8 +24,7 @@ class Upah extends Model
     ];
 
     /**
-     * Relasi ke model CatatanLembur
-     * ini adalah relasi belongsTo 
+     * Relasi ke model CatatanLembur 
      */
     public function catatanLembur()
     {

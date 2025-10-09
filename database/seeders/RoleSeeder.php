@@ -34,7 +34,7 @@ class RoleSeeder extends Seeder
         ]);
         $pimpinan->assignRole('Pimpinan');
 
-        // Create karyawan for pimpinan
+
         Karyawan::create([
             'user_id' => $pimpinan->id,
             'nama' => 'Pimpinan',
@@ -53,7 +53,6 @@ class RoleSeeder extends Seeder
         ]);
         $hrd->assignRole('HRD');
 
-        // Create karyawan for hrd
         Karyawan::create([
             'user_id' => $hrd->id,
             'nama' => 'HRD',

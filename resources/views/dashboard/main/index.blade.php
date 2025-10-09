@@ -141,8 +141,8 @@
                                         <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
                                             {{ $overtime->tanggal->format('d M Y') }}</td>
                                         <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            {{ $overtime->jam_masuk_formatted }} -
-                                            {{ $overtime->jam_keluar_formatted }}</td>
+                                            {{ date('H:i', strtotime($overtime->jam_masuk)) }} WIB -
+                                            {{ date('H:i', strtotime($overtime->jam_keluar)) }} WIB</td>
                                         <td class="px-4 py-4 whitespace-nowrap">
                                             <span
                                                 class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">{{ $overtime->durasi_lembur }}
@@ -205,8 +205,8 @@
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
                                         {{ $overtime->tanggal->format('d M Y') }}</td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        {{ $overtime->jam_masuk_formatted }} -
-                                        {{ $overtime->jam_keluar_formatted }}</td>
+                                        {{ date('H:i', strtotime($overtime->jam_masuk)) }} WIB -
+                                        {{ date('H:i', strtotime($overtime->jam_keluar)) }} WIB</td>
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <span
                                             class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">{{ $overtime->durasi_lembur }}

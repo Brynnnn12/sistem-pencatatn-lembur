@@ -6,15 +6,16 @@
                 <!-- Header Card -->
                 <div class="bg-white shadow-xl rounded-2xl overflow-hidden">
                     <div
-                        class="bg-gradient-to-br from-{{ $persetujuan->status_color }}-500 via-{{ $persetujuan->status_color }}-600 to-{{ $persetujuan->status_color }}-700 px-8 py-8">
+                        class="bg-gradient-to-br from-{{ $persetujuan->status === 'disetujui' ? 'green' : ($persetujuan->status === 'ditolak' ? 'red' : 'gray') }}-500 via-{{ $persetujuan->status === 'disetujui' ? 'green' : ($persetujuan->status === 'ditolak' ? 'red' : 'gray') }}-600 to-{{ $persetujuan->status === 'disetujui' ? 'green' : ($persetujuan->status === 'ditolak' ? 'red' : 'gray') }}-700 px-8 py-8">
                         <div class="text-center text-white">
                             <div
                                 class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                                 <i
-                                    class="{{ $persetujuan->status_icon }} text-3xl text-{{ $persetujuan->status_color }}-600"></i>
+                                    class="{{ $persetujuan->status === 'disetujui' ? 'fas fa-check-circle' : ($persetujuan->status === 'ditolak' ? 'fas fa-times-circle' : 'fas fa-question-circle') }} text-3xl text-{{ $persetujuan->status === 'disetujui' ? 'green' : ($persetujuan->status === 'ditolak' ? 'red' : 'gray') }}-600"></i>
                             </div>
                             <h1 class="text-3xl font-bold mb-2">Status Persetujuan</h1>
-                            <p class="text-xl text-{{ $persetujuan->status_color }}-100">
+                            <p
+                                class="text-xl text-{{ $persetujuan->status === 'disetujui' ? 'green' : ($persetujuan->status === 'ditolak' ? 'red' : 'gray') }}-100">
                                 {{ ucfirst($persetujuan->status) }}</p>
                         </div>
                     </div>
@@ -32,8 +33,11 @@
                                             class="font-medium">{{ $persetujuan->catatanLembur->tanggal->format('l, d F Y') }}</span>
                                     </p>
                                     <p class="text-sm text-gray-600">Jam: <span
-                                            class="font-medium">{{ $persetujuan->catatanLembur->jam_masuk_formatted }}
-                                            - {{ $persetujuan->catatanLembur->jam_keluar_formatted }}</span></p>
+                                            class="font-medium">{{ date('H:i', strtotime($persetujuan->catatanLembur->jam_masuk)) }}
+                                            WIB
+                                            - {{ date('H:i', strtotime($persetujuan->catatanLembur->jam_keluar)) }}
+                                            WIB</span>
+                                    </p>
                                     <p class="text-sm text-gray-600">Durasi: <span
                                             class="font-medium">{{ $persetujuan->catatanLembur->durasi_lembur }}
                                             jam</span></p>
@@ -112,24 +116,25 @@
                 <div class="bg-white shadow-md rounded-lg overflow-hidden">
                     <!-- Header -->
                     <div
-                        class="bg-gradient-to-r from-{{ $persetujuan->status_color }}-600 to-{{ $persetujuan->status_color }}-800 px-6 py-4">
+                        class="bg-gradient-to-r from-{{ $persetujuan->status === 'disetujui' ? 'green' : ($persetujuan->status === 'ditolak' ? 'red' : 'gray') }}-600 to-{{ $persetujuan->status === 'disetujui' ? 'green' : ($persetujuan->status === 'ditolak' ? 'red' : 'gray') }}-800 px-6 py-4">
                         <div class="flex items-center justify-between">
                             <div>
                                 <h1 class="text-2xl font-bold text-white">Detail Persetujuan Lembur</h1>
-                                <p class="text-{{ $persetujuan->status_color }}-100">
+                                <p
+                                    class="text-{{ $persetujuan->status === 'disetujui' ? 'green' : ($persetujuan->status === 'ditolak' ? 'red' : 'gray') }}-100">
                                     {{ ucfirst($persetujuan->status) }}</p>
                             </div>
                             <div class="flex space-x-2">
                                 @can('update', $persetujuan)
                                     <x-ui.button variant="outline" size="sm" icon="fas fa-edit"
                                         onclick="location.href='{{ route('persetujuan.edit', $persetujuan) }}'"
-                                        class="bg-white text-{{ $persetujuan->status_color }}-600 border-white hover:bg-{{ $persetujuan->status_color }}-50">
+                                        class="bg-white text-{{ $persetujuan->status === 'disetujui' ? 'green' : ($persetujuan->status === 'ditolak' ? 'red' : 'gray') }}-600 border-white hover:bg-{{ $persetujuan->status === 'disetujui' ? 'green' : ($persetujuan->status === 'ditolak' ? 'red' : 'gray') }}-50">
                                         Edit
                                     </x-ui.button>
                                 @endcan
                                 <x-ui.button variant="outline" size="sm" icon="fas fa-arrow-left"
                                     onclick="history.back()"
-                                    class="bg-white text-{{ $persetujuan->status_color }}-600 border-white hover:bg-{{ $persetujuan->status_color }}-50">
+                                    class="bg-white text-{{ $persetujuan->status === 'disetujui' ? 'green' : ($persetujuan->status === 'ditolak' ? 'red' : 'gray') }}-600 border-white hover:bg-{{ $persetujuan->status === 'disetujui' ? 'green' : ($persetujuan->status === 'ditolak' ? 'red' : 'gray') }}-50">
                                     Kembali
                                 </x-ui.button>
                             </div>
@@ -154,12 +159,14 @@
                                     <div class="flex justify-between">
                                         <span class="text-gray-600">Jam Masuk:</span>
                                         <span
-                                            class="font-medium">{{ $persetujuan->catatanLembur->jam_masuk_formatted }}</span>
+                                            class="font-medium">{{ date('H:i', strtotime($persetujuan->catatanLembur->jam_masuk)) }}
+                                            WIB</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span class="text-gray-600">Jam Keluar:</span>
                                         <span
-                                            class="font-medium">{{ $persetujuan->catatanLembur->jam_keluar_formatted }}</span>
+                                            class="font-medium">{{ date('H:i', strtotime($persetujuan->catatanLembur->jam_keluar)) }}
+                                            WIB</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span class="text-gray-600">Durasi:</span>
@@ -173,7 +180,7 @@
                             <div>
                                 <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
                                     <i
-                                        class="{{ $persetujuan->status_icon }} mr-2 text-{{ $persetujuan->status_color }}-600"></i>
+                                        class="{{ $persetujuan->status === 'disetujui' ? 'fas fa-check-circle' : ($persetujuan->status === 'ditolak' ? 'fas fa-times-circle' : 'fas fa-question-circle') }} mr-2 text-{{ $persetujuan->status === 'disetujui' ? 'green' : ($persetujuan->status === 'ditolak' ? 'red' : 'gray') }}-600"></i>
                                     Informasi Persetujuan
                                 </h3>
                                 <div class="space-y-3">
@@ -181,8 +188,9 @@
                                         <span class="text-gray-600">Status:</span>
                                         <span class="font-medium">
                                             <span
-                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ $persetujuan->status_color }}-100 text-{{ $persetujuan->status_color }}-800">
-                                                <i class="{{ $persetujuan->status_icon }} mr-1"></i>
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ $persetujuan->status === 'disetujui' ? 'green' : ($persetujuan->status === 'ditolak' ? 'red' : 'gray') }}-100 text-{{ $persetujuan->status === 'disetujui' ? 'green' : ($persetujuan->status === 'ditolak' ? 'red' : 'gray') }}-800">
+                                                <i
+                                                    class="{{ $persetujuan->status === 'disetujui' ? 'fas fa-check-circle' : ($persetujuan->status === 'ditolak' ? 'fas fa-times-circle' : 'fas fa-question-circle') }} mr-1"></i>
                                                 {{ ucfirst($persetujuan->status) }}
                                             </span>
                                         </span>

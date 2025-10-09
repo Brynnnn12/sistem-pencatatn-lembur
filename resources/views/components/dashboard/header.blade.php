@@ -24,7 +24,7 @@
         <!-- Right Section -->
         <div class="flex items-center space-x-4">
             <!-- User Menu -->
-            <div class="relative" x-data="{ open: false }">
+            <div class="relative" ">
                 <button @click="open = !open" @click.away="open = false"
                     class="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <div
@@ -32,28 +32,10 @@
                         <span
                             class="font-bold text-white text-sm">{{ substr(Auth::user()->karyawan->nama, 0, 1) }}</span>
                     </div>
-                    <i class="fas fa-chevron-down text-gray-400 text-sm transition-transform"
-                        :class="{ 'rotate-180': open }"></i>
+
                 </button>
 
-                <!-- Dropdown Menu -->
-                <div x-show="open" x-transition
-                    class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-[100]">
-                    <a href="{{ route('profile.edit') }}"
-                        class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
-                        <i class="fas fa-user mr-3 text-gray-500"></i>
-                        Profile
-                    </a>
-                    <hr class="my-1 border-gray-200">
-                    <form action="{{ route('logout') }}" method="POST" class="w-full">
-                        @csrf
-                        <button type="submit"
-                            class="w-full flex items-center px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors">
-                            <i class="fas fa-sign-out-alt mr-3"></i>
-                            Logout
-                        </button>
-                    </form>
-                </div>
+
             </div>
         </div>
     </div>

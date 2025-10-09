@@ -13,7 +13,7 @@ class JabatanPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->hasAnyRole(['Pimpinan', 'HRD']);
+        return $user->hasRole('HRD');
     }
 
     /**
@@ -21,7 +21,7 @@ class JabatanPolicy
      */
     public function view(User $user, Jabatan $jabatan): bool
     {
-        return $user->hasAnyRole(['Pimpinan', 'HRD']);
+        return $user->hasRole('HRD');
     }
 
     /**
@@ -29,7 +29,7 @@ class JabatanPolicy
      */
     public function create(User $user): bool
     {
-        return $user->hasAnyRole(['Pimpinan', 'HRD']);
+        return $user->hasRole('HRD');
     }
 
     /**
@@ -37,7 +37,7 @@ class JabatanPolicy
      */
     public function update(User $user, Jabatan $jabatan): bool
     {
-        return $user->hasAnyRole(['Pimpinan', 'HRD']);
+        return $user->hasRole('HRD');
     }
 
     /**
@@ -45,7 +45,7 @@ class JabatanPolicy
      */
     public function delete(User $user, Jabatan $jabatan): bool
     {
-        return $user->hasAnyRole(['Pimpinan', 'HRD']);
+        return $user->hasRole('HRD');
     }
 
     /**
@@ -53,7 +53,7 @@ class JabatanPolicy
      */
     public function restore(User $user, Jabatan $jabatan): bool
     {
-        return $user->hasRole('Pimpinan', 'HRD');
+        return $user->hasRole('HRD');
     }
 
     /**
@@ -61,6 +61,6 @@ class JabatanPolicy
      */
     public function forceDelete(User $user, Jabatan $jabatan): bool
     {
-        return $user->hasRole('Pimpinan', 'HRD');
+        return $user->hasRole('HRD');
     }
 }

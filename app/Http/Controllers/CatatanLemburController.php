@@ -62,6 +62,19 @@ class CatatanLemburController extends Controller
             $data['karyawan_id'] = Auth::user()->karyawan->id;
         }
 
+        // ✅ Cek apakah sudah ada lembur aktif (pending/approved) di tanggal yang sama
+        $existingLembur = CatatanLembur::where('karyawan_id', $data['karyawan_id'])
+            ->where('tanggal', $data['tanggal'])
+            ->whereHas('persetujuan', function ($q) {
+                $q->whereIn('status', ['pending', 'approved']);
+            })
+            ->exists();
+
+        if ($existingLembur) {
+            return redirect()->back()->withErrors(['tanggal' => 'Anda sudah memiliki lembur aktif di tanggal ini.']);
+        }
+
+
         $catatanLembur = CatatanLembur::create($data);
 
         // Auto create Persetujuan dengan status pending

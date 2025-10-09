@@ -22,7 +22,14 @@ class KaryawanController extends Controller
     public function index()
     {
         $this->authorize('viewAny', Karyawan::class);
-        $karyawans = Karyawan::with(['user', 'departemen', 'jabatan'])->paginate(10);
+        $karyawans = Karyawan::with(['user', 'departemen', 'jabatan'])->whereHas(
+            'user',
+            function ($query) {
+                $query->whereHas('roles', function ($q) {
+                    $q->where('name', 'Karyawan');
+                });
+            }
+        )->paginate(10);
         return view('dashboard.karyawan.index', compact('karyawans'));
     }
 

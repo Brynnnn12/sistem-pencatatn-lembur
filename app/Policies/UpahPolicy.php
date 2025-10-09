@@ -4,15 +4,18 @@ namespace App\Policies;
 
 use App\Models\Upah;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 class UpahPolicy
 {
+    use HandlesAuthorization;
+
     /**
      * Determine whether the user can view any models.
      */
     public function viewAny(User $user): bool
     {
+        // HRD dan Pimpinan bisa lihat semua upah
         return $user->hasAnyRole(['Pimpinan', 'HRD']);
     }
 
@@ -21,12 +24,16 @@ class UpahPolicy
      */
     public function view(User $user, Upah $upah): bool
     {
-        // Pimpinan dan HRD bisa melihat semua
-        if ($user->hasAnyRole(['Pimpinan', 'HRD'])) {
+        // HRD dan Pimpinan bisa melihat semua
+        if ($user->hasAnyRole(['HRD', 'Pimpinan'])) {
             return true;
         }
 
-        // Karyawan tidak bisa melihat upah
+        // Karyawan hanya bisa melihat upah miliknya sendiri
+        if ($user->hasRole('Karyawan') && $user->id === $upah->user_id) {
+            return true;
+        }
+
         return false;
     }
 
@@ -35,7 +42,8 @@ class UpahPolicy
      */
     public function create(User $user): bool
     {
-        return false; // Upah dibuat otomatis saat catatan lembur dibuat
+        // Upah dibuat otomatis saat catatan lembur dibuat
+        return false;
     }
 
     /**
@@ -43,7 +51,8 @@ class UpahPolicy
      */
     public function update(User $user, Upah $upah): bool
     {
-        return $user->hasAnyRole(['Pimpinan', 'HRD']);
+        // Hanya HRD yang bisa update
+        return $user->hasRole('HRD');
     }
 
     /**
@@ -51,7 +60,8 @@ class UpahPolicy
      */
     public function delete(User $user, Upah $upah): bool
     {
-        return $user->hasAnyRole(['Pimpinan', 'HRD']);
+        // Hanya HRD yang bisa delete
+        return $user->hasRole('HRD');
     }
 
     /**

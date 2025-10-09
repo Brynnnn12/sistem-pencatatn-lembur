@@ -18,8 +18,8 @@
                             <div class="text-sm text-gray-900">
                                 {{ $persetujuan->catatanLembur->tanggal->format('d M Y') }}</div>
                             <div class="text-sm text-gray-500">
-                                {{ $persetujuan->catatanLembur->jam_masuk_formatted }} -
-                                {{ $persetujuan->catatanLembur->jam_keluar_formatted }}</div>
+                                {{ date('H:i', strtotime($persetujuan->catatanLembur->jam_masuk)) }} WIB -
+                                {{ date('H:i', strtotime($persetujuan->catatanLembur->jam_keluar)) }} WIB</div>
                         </div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
@@ -30,13 +30,17 @@
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
                         <span
-                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ $persetujuan->status_color }}-100 text-{{ $persetujuan->status_color }}-800">
-                            <i class="{{ $persetujuan->status_icon }} mr-1"></i>
+                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ $persetujuan->status === 'disetujui' ? 'green' : ($persetujuan->status === 'ditolak' ? 'red' : 'gray') }}-100 text-{{ $persetujuan->status === 'disetujui' ? 'green' : ($persetujuan->status === 'ditolak' ? 'red' : 'gray') }}-800">
+                            <i
+                                class="{{ $persetujuan->status === 'disetujui' ? 'fas fa-check-circle' : ($persetujuan->status === 'ditolak' ? 'fas fa-times-circle' : 'fas fa-question-circle') }} mr-1"></i>
                             {{ ucfirst($persetujuan->status) }}
                         </span>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {{ $persetujuan->created_at->format('d M Y H:i') }}
+                        @if ($persetujuan->status === 'disetujui')
+                            {{ $persetujuan->created_at->format('d M Y H:i') }}
+                        @endif
+
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <div class="flex space-x-2">

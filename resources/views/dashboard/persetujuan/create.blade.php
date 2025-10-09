@@ -27,8 +27,10 @@
                                 <option value="{{ $catatanLembur->id }}"
                                     {{ old('catatan_lembur_id') == $catatanLembur->id ? 'selected' : '' }}>
                                     {{ $catatanLembur->tanggal->format('d M Y') }} -
-                                    {{ $catatanLembur->karyawan->nama }} ({{ $catatanLembur->jam_masuk_formatted }}
-                                    - {{ $catatanLembur->jam_keluar_formatted }})
+                                    {{ $catatanLembur->karyawan->nama }}
+                                    ({{ date('H:i', strtotime($catatanLembur->jam_masuk)) }}
+                                    WIB
+                                    - {{ date('H:i', strtotime($catatanLembur->jam_keluar)) }} WIB)
                                 </option>
                             @endforeach
                         </select>

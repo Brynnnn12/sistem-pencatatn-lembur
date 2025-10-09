@@ -22,7 +22,7 @@ class StoreCatatanLemburRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'tanggal' => 'required|date|before_or_equal:today',
+            'tanggal' => 'required|date|after_or_equal:today',
             'jam_masuk' => 'required|date_format:H:i',
             'jam_keluar' => 'required|date_format:H:i',
         ];
@@ -61,7 +61,7 @@ class StoreCatatanLemburRequest extends FormRequest
 
             'tanggal.required' => 'Tanggal harus diisi.',
             'tanggal.date' => 'Format tanggal tidak valid.',
-            'tanggal.before_or_equal' => 'Tanggal tidak boleh lebih dari hari ini.',
+            'tanggal.after_or_equal' => 'Tanggal tidak boleh sebelum hari ini.',
             'jam_masuk.required' => 'Jam masuk harus diisi.',
             'jam_masuk.date_format' => 'Format jam masuk tidak valid.',
             'jam_keluar.required' => 'Jam keluar harus diisi.',

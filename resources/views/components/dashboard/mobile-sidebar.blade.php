@@ -155,7 +155,7 @@
                 @endif
 
                 <!-- Profile -->
-                <div class="pt-6">
+                {{-- <div class="pt-6">
                     <p class="text-xs font-semibold text-blue-300 uppercase tracking-wider mb-4 px-4">Account</p>
 
                     <a href="{{ route('profile.edit') }}"
@@ -167,7 +167,7 @@
                         </div>
                         <span class="font-medium">Profile</span>
                     </a>
-                </div>
+                </div> --}}
             </nav>
         </div>
 

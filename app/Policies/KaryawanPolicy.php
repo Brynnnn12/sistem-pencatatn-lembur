@@ -21,9 +21,6 @@ class KaryawanPolicy
      */
     public function view(User $user, Karyawan $karyawan): bool
     {
-        if ($user->hasRole('Karyawan')) {
-            return $karyawan->user_id === $user->id;
-        }
         return $user->hasAnyRole(['Pimpinan', 'HRD']);
     }
 
@@ -32,7 +29,7 @@ class KaryawanPolicy
      */
     public function create(User $user): bool
     {
-        return $user->hasAnyRole(['Pimpinan', 'HRD']);
+        return $user->hasRole('HRD');
     }
 
     /**
@@ -40,7 +37,7 @@ class KaryawanPolicy
      */
     public function update(User $user, Karyawan $karyawan): bool
     {
-        return $user->hasAnyRole(['Pimpinan', 'HRD']);
+        return $user->hasRole('HRD');
     }
 
     /**
@@ -48,7 +45,7 @@ class KaryawanPolicy
      */
     public function delete(User $user, Karyawan $karyawan): bool
     {
-        return $user->hasAnyRole(['Pimpinan', 'HRD']);
+        return $user->hasRole('HRD');
     }
 
     /**
@@ -56,7 +53,7 @@ class KaryawanPolicy
      */
     public function restore(User $user, Karyawan $karyawan): bool
     {
-        return false;
+        return $user->hasRole('HRD');
     }
 
     /**
@@ -64,6 +61,6 @@ class KaryawanPolicy
      */
     public function forceDelete(User $user, Karyawan $karyawan): bool
     {
-        return false;
+        return $user->hasRole('HRD');
     }
 }

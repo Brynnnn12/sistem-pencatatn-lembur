@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,8 +20,6 @@ class CatatanLembur extends Model
 
     protected $casts = [
         'tanggal' => 'date',
-        'jam_masuk' => 'datetime',
-        'jam_keluar' => 'datetime',
     ];
 
     public function karyawan()
@@ -39,33 +38,29 @@ class CatatanLembur extends Model
     }
 
     /**
-     * Menghitung durasi lembur dalam jam
-     * ini adalah accessor untuk atribut durasi_lembur
+     * ✅ Menghitung durasi lembur dalam jam (diperbaiki)
+     * Menggunakan Carbon untuk akurasi yang lebih baik
      */
     public function getDurasiLemburAttribute()
     {
-        if ($this->jam_masuk && $this->jam_keluar) {
-            $masuk = strtotime($this->jam_masuk);
-            $keluar = strtotime($this->jam_keluar);
-            $durasi = ($keluar - $masuk) / 3600; // dalam jam
-            return round($durasi, 2);
+        if (!$this->jam_masuk || !$this->jam_keluar || !$this->tanggal) {
+            return 0;
         }
-        return 0;
-    }
 
-    /**
-     * Accessor untuk jam_masuk dengan format WIB
-     */
-    public function getJamMasukFormattedAttribute()
-    {
-        return $this->jam_masuk ? $this->jam_masuk->format('H:i') . ' WIB' : null;
-    }
+        // jam_masuk dan jam_keluar sekarang TIME column, jadi berupa string "H:i:s"
+        $tanggalStr = $this->tanggal->format('Y-m-d');
+        $jamMasukStr = $this->jam_masuk;
+        $jamKeluarStr = $this->jam_keluar;
 
-    /**
-     * Accessor untuk jam_keluar dengan format WIB
-     */
-    public function getJamKeluarFormattedAttribute()
-    {
-        return $this->jam_keluar ? $this->jam_keluar->format('H:i') . ' WIB' : null;
+        $start = Carbon::createFromFormat('Y-m-d H:i:s', $tanggalStr . ' ' . $jamMasukStr);
+        $end = Carbon::createFromFormat('Y-m-d H:i:s', $tanggalStr . ' ' . $jamKeluarStr);
+
+        // Jika jam keluar lebih kecil, berarti melewati tengah malam
+        if ($end->lt($start)) {
+            $end->addDay();
+        }
+
+        // Hitung selisih dalam jam
+        return round($start->diffInMinutes($end) / 60, 2);
     }
 }

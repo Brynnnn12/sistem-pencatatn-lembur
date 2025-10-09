@@ -13,7 +13,8 @@ class DepartemenPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->hasAnyRole(['Pimpinan', 'HRD']);
+
+        return $user->hasRole('HRD');
     }
 
     /**
@@ -21,7 +22,7 @@ class DepartemenPolicy
      */
     public function view(User $user, Departemen $departemen): bool
     {
-        return $user->hasAnyRole(['Pimpinan', 'HRD']);
+        return $user->hasRole('HRD');
     }
 
     /**
@@ -29,7 +30,7 @@ class DepartemenPolicy
      */
     public function create(User $user): bool
     {
-        return $user->hasAnyRole(['Pimpinan', 'HRD']);
+        return $user->hasRole('HRD');
     }
 
     /**
@@ -37,7 +38,7 @@ class DepartemenPolicy
      */
     public function update(User $user, Departemen $departemen): bool
     {
-        return $user->hasAnyRole(['Pimpinan', 'HRD']);
+        return $user->hasRole('HRD');
     }
 
     /**
@@ -45,7 +46,7 @@ class DepartemenPolicy
      */
     public function delete(User $user, Departemen $departemen): bool
     {
-        return $user->hasAnyRole(['Pimpinan', 'HRD']);
+        return $user->hasRole('HRD');
     }
 
     /**
@@ -53,7 +54,7 @@ class DepartemenPolicy
      */
     public function restore(User $user, Departemen $departemen): bool
     {
-        return $user->hasRole('Pimpinan', 'HRD');
+        return $user->hasRole('HRD');
     }
 
     /**
@@ -61,6 +62,6 @@ class DepartemenPolicy
      */
     public function forceDelete(User $user, Departemen $departemen): bool
     {
-        return $user->hasRole('Pimpinan', 'HRD');
+        return $user->hasRole('HRD');
     }
 }

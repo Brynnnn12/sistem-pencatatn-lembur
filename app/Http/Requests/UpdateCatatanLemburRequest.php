@@ -22,7 +22,7 @@ class UpdateCatatanLemburRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'tanggal' => 'sometimes|date|before_or_equal:today',
+            'tanggal' => 'sometimes|date|after_or_equal:today',
             'jam_masuk' => 'sometimes|date_format:H:i',
             'jam_keluar' => 'sometimes|date_format:H:i|after:jam_masuk',
         ];
@@ -35,7 +35,7 @@ class UpdateCatatanLemburRequest extends FormRequest
     {
         return [
             'tanggal.date' => 'Format tanggal tidak valid.',
-            'tanggal.before_or_equal' => 'Tanggal tidak boleh lebih dari hari ini.',
+            'tanggal.after_or_equal' => 'Tanggal tidak boleh sebelum hari ini.',
             'jam_masuk.date_format' => 'Format jam masuk tidak valid.',
             'jam_keluar.date_format' => 'Format jam keluar tidak valid.',
             'jam_keluar.after' => 'Jam keluar harus setelah jam masuk.',

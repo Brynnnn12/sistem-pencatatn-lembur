@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Persetujuan extends Model
 {
@@ -29,29 +28,5 @@ class Persetujuan extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    /**
-     * ini untuk mendapatkan warna status
-     */
-    public function getStatusColorAttribute()
-    {
-        return match ($this->status) {
-            'disetujui' => 'green',
-            'ditolak' => 'red',
-            default => 'gray',
-        };
-    }
-
-    /**
-     * ini untuk mendapatkan ikon status
-     */
-    public function getStatusIconAttribute()
-    {
-        return match ($this->status) {
-            'disetujui' => 'fas fa-check-circle',
-            'ditolak' => 'fas fa-times-circle',
-            default => 'fas fa-question-circle',
-        };
     }
 }

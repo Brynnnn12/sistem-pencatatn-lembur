@@ -2,14 +2,20 @@
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
-test('password can be updated', function () {
+uses(RefreshDatabase::class);
+
+
+test('password dapat diperbarui', function () {
     $user = User::factory()->create();
 
     $response = $this
         ->actingAs($user)
         ->from('/profile')
+        ->withSession(['_token' => 'test-token'])
         ->put('/password', [
+            '_token' => 'test-token',
             'current_password' => 'password',
             'password' => 'new-password',
             'password_confirmation' => 'new-password',
@@ -22,13 +28,15 @@ test('password can be updated', function () {
     $this->assertTrue(Hash::check('new-password', $user->refresh()->password));
 });
 
-test('correct password must be provided to update password', function () {
+test('password yang benar harus disediakan untuk memperbarui password', function () {
     $user = User::factory()->create();
 
     $response = $this
         ->actingAs($user)
         ->from('/profile')
+        ->withSession(['_token' => 'test-token'])
         ->put('/password', [
+            '_token' => 'test-token',
             'current_password' => 'wrong-password',
             'password' => 'new-password',
             'password_confirmation' => 'new-password',

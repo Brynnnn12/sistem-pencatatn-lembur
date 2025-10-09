@@ -37,7 +37,7 @@
             @if (Auth::user()->hasAnyRole(['Pimpinan', 'HRD']))
                 <div class="pt-6">
                     <p class="text-xs font-semibold text-blue-300 uppercase tracking-wider mb-4 px-4">Management</p>
-                    @if (Auth::user()->hasRole('Pimpinan'))
+                    @if (Auth::user()->hasRole('HRD'))
                         <a href="{{ route('jabatan.index') }}"
                             class="group flex items-center px-4 py-3 rounded-xl transition-all duration-300 hover:bg-white/10 hover:shadow-lg hover:scale-[1.02] hover:translate-x-1 {{ request()->routeIs('jabatan.*') ? 'bg-white/20 shadow-lg scale-[1.02] translate-x-1' : '' }}">
                             <div
@@ -126,7 +126,7 @@
             @endif
 
             <!-- Profile -->
-            <div class="pt-6">
+            {{-- <div class="pt-6">
                 <p class="text-xs font-semibold text-blue-300 uppercase tracking-wider mb-4 px-4">Account</p>
                 <a href="{{ route('profile.edit') }}"
                     class="group flex items-center px-4 py-3 rounded-xl transition-all duration-300 hover:bg-white/10 hover:shadow-lg hover:scale-[1.02] hover:translate-x-1 {{ request()->routeIs('profile.*') ? 'bg-white/20 shadow-lg scale-[1.02] translate-x-1' : '' }}">
@@ -136,7 +136,7 @@
                     </div>
                     <span class="font-medium">Profile</span>
                 </a>
-            </div>
+            </div> --}}
         </nav>
     </div>
 

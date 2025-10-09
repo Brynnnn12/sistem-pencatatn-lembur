@@ -36,10 +36,10 @@
                         {{ $catatanLembur->tanggal->format('d M Y') }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {{ $catatanLembur->jam_masuk_formatted }}
+                        {{ date('H:i', strtotime($catatanLembur->jam_masuk)) }} WIB
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {{ $catatanLembur->jam_keluar_formatted }}
+                        {{ date('H:i', strtotime($catatanLembur->jam_keluar)) }} WIB
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         {{ $catatanLembur->durasi_lembur }} jam

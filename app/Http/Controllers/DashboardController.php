@@ -122,7 +122,9 @@ class DashboardController extends Controller
      */
     private function getRecentOvertime($user)
     {
-        $query = CatatanLembur::with(['karyawan.jabatan', 'karyawan.departemen']);
+        $query = CatatanLembur::with(['karyawan.jabatan', 'karyawan.departemen'])->whereHas('persetujuan', function ($q) {
+            $q->where('status', 'disetujui');
+        });
 
         // Filter berdasarkan karyawan jika bukan admin
         if (!$user->hasAnyRole(['Pimpinan', 'HRD'])) {
